@@ -2,75 +2,74 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Lightbulb, Rocket, ArrowRight } from "lucide-react";
 import styles from "./Experience.module.css";
+
+const SERVICES = [
+  "AI & Machine Learning",
+  "Generative AI (Gen AI)",
+  "Agentic AI",
+  "SaaS Development",
+  "UI/UX Design",
+  "Dev Tools & Full Stack",
+  "Data & Analytics",
+  "Cybersecurity & Reliability",
+  "Tech Consulting & Strategy"
+];
 
 export default function Experience() {
   return (
-    <section className={styles.experienceSection}>
+    <section className={styles.experienceSection} id="services">
       <div className={styles.header}>
         <h2 className={styles.title}>We build experience</h2>
-        <a href="#" className={styles.link}>Know more —</a>
+        <a href="#services" className={styles.link}>Know more —</a>
       </div>
 
       <div className={styles.content}>
-        <motion.div 
-          className={styles.card}
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <div>
-            <div className={styles.cardIcon}>
-              <Lightbulb size={32} />
-            </div>
-            <h3 className={styles.cardTitle}>Ideas</h3>
-            <p className={styles.cardDesc}>
-              We create beautiful stories that are meaningful to your audience, turning abstract concepts into engaging visual content.
+        
+        {/* Left Column: Sticky Image & Info */}
+        <div className={styles.leftColumn}>
+          <div className={styles.stickyWrapper}>
+            <motion.div 
+              className={styles.imageWrapper}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+            >
+              <Image 
+                src="/images/about.png" 
+                alt="Our Services" 
+                fill 
+                sizes="(max-width: 1024px) 100vw, 33vw"
+                className={styles.image} 
+              />
+            </motion.div>
+            <p className={styles.info}>
+              We provide cutting-edge digital solutions tailored to the modern tech landscape. 
+              From deep learning architectures to robust SaaS platforms, we architect your future.
             </p>
           </div>
-          <a href="#" className={styles.cardLink}>
-            Read More <ArrowRight size={14} />
-          </a>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          className={styles.card}
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div>
-            <div className={styles.cardIcon}>
-              <Rocket size={32} />
-            </div>
-            <h3 className={styles.cardTitle}>Marketing</h3>
-            <p className={styles.cardDesc}>
-              Using data-driven strategies and bold creative direction, we skyrocket your brand visibility in a crowded digital space.
-            </p>
-          </div>
-          <a href="#" className={styles.cardLink}>
-            Read More <ArrowRight size={14} />
-          </a>
-        </motion.div>
+        {/* Right Column: List of Services */}
+        <div className={styles.servicesList}>
+          {SERVICES.map((service, index) => (
+            <motion.div 
+              key={index}
+              className={styles.serviceItem}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <div className={styles.serviceName}>{service}</div>
+              <div className={styles.serviceNum}>
+                {String(index + 1).padStart(2, '0')}
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-        <motion.div 
-          className={styles.imageWrapper}
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <Image 
-            src="/images/about.png" 
-            alt="Experience" 
-            fill 
-            sizes="(max-width: 1024px) 100vw, 33vw"
-            className={styles.image} 
-          />
-        </motion.div>
       </div>
     </section>
   );
