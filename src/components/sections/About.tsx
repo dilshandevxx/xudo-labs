@@ -23,6 +23,7 @@ export default function About() {
             src="/images/hero.png" 
             alt="Workspace" 
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             style={{ objectFit: 'cover', borderRadius: '4px' }}
           />
         </motion.div>
@@ -31,6 +32,7 @@ export default function About() {
             src="/images/about.png" 
             alt="Our Team" 
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             style={{ objectFit: 'cover', borderRadius: '4px' }}
           />
         </motion.div>

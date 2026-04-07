@@ -24,6 +24,7 @@ export default function Testimonials() {
             src="/images/hero.png" 
             alt="John Doe" 
             fill 
+            sizes="80px"
             style={{ objectFit: 'cover' }}
           />
         </div>

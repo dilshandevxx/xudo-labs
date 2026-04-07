@@ -51,6 +51,7 @@ export default function Blog() {
                 src={post.image} 
                 alt={post.title} 
                 fill 
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className={styles.image}
               />
             </div>

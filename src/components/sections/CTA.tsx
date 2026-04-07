@@ -18,6 +18,7 @@ export default function CTA() {
           src="/images/portfolio1.png" 
           alt="Active Lifestyle" 
           fill 
+          sizes="(max-width: 1024px) 100vw, 50vw"
           className={styles.image}
         />
       </motion.div>
