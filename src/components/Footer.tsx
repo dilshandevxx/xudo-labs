@@ -3,7 +3,6 @@
 import Link from "next/link";
 import styles from "./Footer.module.css";
 import { ArrowUp } from "lucide-react";
-import { FaInstagram, FaTwitter, FaLinkedin, FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -13,60 +12,53 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.top}>
-        <div className={styles.brand}>
-          <div className={styles.logo}>xūdū</div>
-          <div className={styles.desc}>
-            An award-winning digital studio focused on web experiences and branding. 
-            Brooklyn, New York.
-          </div>
-        </div>
-
+        
+        {/* Navigation Column */}
         <div className={styles.column}>
           <div className={styles.colTitle}>Navigation</div>
           <div className={styles.links}>
-            <Link href="#" className={styles.link}>Home</Link>
-            <Link href="#" className={styles.link}>About</Link>
-            <Link href="#" className={styles.link}>Work</Link>
+            <Link href="/" className={styles.link}>Home</Link>
+            <Link href="/services" className={styles.link}>About</Link>
+            <Link href="/#services" className={styles.link}>Work</Link>
             <Link href="#" className={styles.link}>Contact</Link>
           </div>
         </div>
 
+        {/* Social Column */}
         <div className={styles.column}>
-          <div className={styles.colTitle}>Info</div>
+          <div className={styles.colTitle}>Socials</div>
           <div className={styles.links}>
-            <Link href="#" className={styles.link}>FAQ</Link>
-            <Link href="#" className={styles.link}>Careers</Link>
-            <Link href="#" className={styles.link}>Terms</Link>
-            <Link href="#" className={styles.link}>Privacy</Link>
+            <a href="#" className={styles.link}>Instagram</a>
+            <a href="#" className={styles.link}>Twitter</a>
+            <a href="#" className={styles.link}>LinkedIn</a>
+            <a href="#" className={styles.link}>Dribbble</a>
           </div>
         </div>
 
-        <div className={styles.column}>
-          <div className={styles.colTitle}>Follow Us</div>
-          <div className={styles.socials}>
-            <a href="#" className={styles.socialIcon} aria-label="Facebook">
-              <FaFacebook size={18} />
-            </a>
-            <a href="#" className={styles.socialIcon} aria-label="Twitter">
-              <FaTwitter size={18} />
-            </a>
-            <a href="#" className={styles.socialIcon} aria-label="Instagram">
-              <FaInstagram size={18} />
-            </a>
-            <a href="#" className={styles.socialIcon} aria-label="LinkedIn">
-              <FaLinkedin size={18} />
-            </a>
+        {/* Metadata Column */}
+        <div className={styles.metaColumn}>
+          <div className={styles.desc}>
+            An award-winning digital studio focused on web experiences and branding. 
+            <br /><br />
+            Brooklyn, New York.
           </div>
+          <button onClick={scrollToTop} className={styles.backToTopBtn}>
+            Scroll Top <ArrowUp size={16} />
+          </button>
         </div>
+
       </div>
 
       <div className={styles.bottom}>
-        <div className={styles.copy}>
-          © 2026 Xūdū Digital Studio. All rights reserved.
+        <h1 className={styles.monolithText}>STUDIO</h1>
+        <div className={styles.copyrightLayer}>
+          <div className={styles.copy}>
+            © {new Date().getFullYear()} Xūdū Digital. All rights reserved.
+          </div>
+          <div className={styles.copy}>
+            Designed with absolute precision.
+          </div>
         </div>
-        <button onClick={scrollToTop} className={styles.link} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'none', border: 'none', cursor: 'pointer' }}>
-          Back to Top <ArrowUp size={14} />
-        </button>
       </div>
     </footer>
   );
