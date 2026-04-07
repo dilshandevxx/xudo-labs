@@ -1,0 +1,84 @@
+.testimonialsSection {
+  padding: 10rem var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 4rem);
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+}
+
+.quoteContainer {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  /* border: 2px solid var(--border); */
+}
+
+.quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--foreground);
+}
+
+.author {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.authorName {
+  color: var(--foreground);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.dots {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--muted);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.dotActive {
+  background-color: var(--foreground);
+  opacity: 1;
+}
