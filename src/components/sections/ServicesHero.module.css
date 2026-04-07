@@ -37,11 +37,13 @@
 
 .title {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 7rem);
+  font-size: clamp(2rem, 10vw, 7rem);
   line-height: 1;
   text-transform: uppercase;
   color: var(--foreground);
   margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .description {

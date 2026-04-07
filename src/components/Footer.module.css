@@ -61,6 +61,27 @@
   margin-left: 10px;
 }
 
+.socialIconsRow {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.socialIcon {
+  color: var(--foreground);
+  transition: color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialIcon:hover {
+  color: var(--muted);
+  transform: translateY(-4px);
+}
+
 .metaColumn {
   display: flex;
   flex-direction: column;

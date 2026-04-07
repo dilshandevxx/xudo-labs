@@ -3,6 +3,7 @@
 import Link from "next/link";
 import styles from "./Footer.module.css";
 import { ArrowUp } from "lucide-react";
+import { FaInstagram, FaTwitter, FaLinkedin, FaDribbble } from "react-icons/fa";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -27,11 +28,11 @@ export default function Footer() {
         {/* Social Column */}
         <div className={styles.column}>
           <div className={styles.colTitle}>Socials</div>
-          <div className={styles.links}>
-            <a href="#" className={styles.link}>Instagram</a>
-            <a href="#" className={styles.link}>Twitter</a>
-            <a href="#" className={styles.link}>LinkedIn</a>
-            <a href="#" className={styles.link}>Dribbble</a>
+          <div className={styles.socialIconsRow}>
+            <a href="#" className={styles.socialIcon} aria-label="Instagram"><FaInstagram size={24} /></a>
+            <a href="#" className={styles.socialIcon} aria-label="Twitter"><FaTwitter size={24} /></a>
+            <a href="#" className={styles.socialIcon} aria-label="LinkedIn"><FaLinkedin size={24} /></a>
+            <a href="#" className={styles.socialIcon} aria-label="Dribbble"><FaDribbble size={24} /></a>
           </div>
         </div>
 
