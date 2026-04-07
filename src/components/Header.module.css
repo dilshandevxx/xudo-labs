@@ -22,26 +22,28 @@
   text-transform: lowercase;
 }
 
-.socials {
-  display: flex;
-  gap: 1.5rem;
-  pointer-events: auto;
-}
-
-.socialIcon {
+.menuButton {
+  background: none;
+  border: none;
   color: var(--foreground);
-  transition: opacity 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  pointer-events: auto; /* MUST BE AUTO TO OVERRIDE HEADER */
+  transition: transform 0.3s ease;
 }
 
-.socialIcon:hover {
-  opacity: 0.6;
+.menuButton:hover {
+  transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
   .header {
     padding: 1.5rem var(--container-padding);
   }
-  .socials {
-    display: none;
+  .menuButton {
+    transform: scale(0.9);
   }
 }

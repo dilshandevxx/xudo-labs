@@ -1,30 +1,31 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
 import styles from "./Header.module.css";
-import { FaInstagram, FaTwitter, FaLinkedin, FaDribbble } from "react-icons/fa";
+import NavigationMenu from "./NavigationMenu";
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <header className={styles.header}>
-      <Link href="/" className={styles.logo}>
-        xūdū
-      </Link>
+    <>
+      <header className={styles.header}>
+        <Link href="/" className={styles.logo}>
+          xūdū
+        </Link>
+        
+        <button 
+          className={styles.menuButton} 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </header>
       
-      <div className={styles.socials}>
-        <a href="#" className={styles.socialIcon} aria-label="Dribbble">
-          <FaDribbble size={20} />
-        </a>
-        <a href="#" className={styles.socialIcon} aria-label="Twitter">
-          <FaTwitter size={20} />
-        </a>
-        <a href="#" className={styles.socialIcon} aria-label="Instagram">
-          <FaInstagram size={20} />
-        </a>
-        <a href="#" className={styles.socialIcon} aria-label="LinkedIn">
-          <FaLinkedin size={20} />
-        </a>
-      </div>
-    </header>
+      <NavigationMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+    </>
   );
 }
