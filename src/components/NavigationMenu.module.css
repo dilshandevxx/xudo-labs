@@ -1,55 +1,76 @@
 .overlay {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background-color: var(--background);
   z-index: 90;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 8rem var(--container-padding) 4rem;
-  border-left: 1px solid var(--border);
-}
-
-@media (min-width: 768px) {
-  .overlay {
-    width: 50vw;
-    max-width: 600px;
-    box-shadow: -20px 0 50px rgba(0, 0, 0, 0.5);
-  }
 }
 
 .navLinks {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin-top: 4rem;
+  gap: 1.5rem;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.navItemWrapper {
+  position: relative;
+  overflow: hidden; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+}
+
+/* Group hover trick: dim all items when navLinks container is hovered */
+.navLinks:hover .navItemWrapper {
+  opacity: 0.2;
+}
+
+/* Focus: restore opacity to 100% only on the deeply hovered item */
+.navLinks .navItemWrapper:hover {
+  opacity: 1;
 }
 
 .navLink {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: clamp(4rem, 10vw, 8rem);
   text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  line-height: 1;
-  transition: color 0.4s ease, padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.navLink:hover {
   color: var(--foreground);
-  padding-left: 2rem;
+  text-decoration: none;
+  line-height: 0.9;
+  transition: color 0.4s ease, transform 0.4s ease;
+  position: relative;
+  display: block;
 }
 
-/* Optional: small footer info inside menu */
+/* Striking inner hover effect */
+.navLinks .navItemWrapper:hover .navLink {
+  color: var(--muted);
+  font-style: italic;
+  transform: scale(1.05); /* Slight pop out */
+}
+
+/* Bottom footer */
 .menuFooter {
-  margin-top: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem var(--container-padding);
   border-top: 1px solid var(--border);
-  padding-top: 2rem;
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .contactLabel {
@@ -64,4 +85,9 @@
   font-size: 1rem;
   color: var(--foreground);
   text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.contactLink:hover {
+  opacity: 0.7;
 }

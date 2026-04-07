@@ -18,21 +18,21 @@ const NAV_LINKS = [
 
 export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps) {
   const overlayVariants = {
-    closed: { x: "100%", transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] as const } },
-    open: { x: 0, transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] as const } }
+    closed: { y: "-100%", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const } },
+    open: { y: 0, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const } }
   };
 
   const linkContainerVariants = {
     closed: { opacity: 0 },
     open: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.3 }
+      transition: { staggerChildren: 0.1, delayChildren: 0.4 }
     }
   };
 
   const linkItemVariants = {
-    closed: { opacity: 0, x: 50 },
-    open: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const } }
+    closed: { y: 150, opacity: 0 },
+    open: { y: 0, opacity: 1, transition: { duration: 1, ease: [0.76, 0, 0.24, 1] as const } }
   };
 
   return (
@@ -53,11 +53,13 @@ export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps)
             exit="closed"
           >
             {NAV_LINKS.map((link, index) => (
-              <motion.div key={index} variants={linkItemVariants}>
-                <Link href={link.href} className={styles.navLink} onClick={onClose}>
-                  {link.label}
-                </Link>
-              </motion.div>
+              <div key={index} className={styles.navItemWrapper}>
+                <motion.div variants={linkItemVariants}>
+                  <Link href={link.href} className={styles.navLink} onClick={onClose}>
+                    {link.label}
+                  </Link>
+                </motion.div>
+              </div>
             ))}
           </motion.nav>
 
