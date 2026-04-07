@@ -53,21 +53,27 @@
   cursor: pointer;
 }
 
+.projectLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 /* For stagger layout, push every even column down a bit */
 @media (min-width: 768px) {
-  .projectCard:nth-child(even) {
+  .projectLink:nth-child(even) .projectCard {
     margin-top: 4rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .projectCard:nth-child(even) {
+  .projectLink:nth-child(even) .projectCard {
     margin-top: 0;
   }
-  .projectCard:nth-child(3n + 2) {
+  .projectLink:nth-child(3n + 2) .projectCard {
     margin-top: 6rem;
   }
-  .projectCard:nth-child(3n + 3) {
+  .projectLink:nth-child(3n + 3) .projectCard {
     margin-top: 3rem;
   }
 }
