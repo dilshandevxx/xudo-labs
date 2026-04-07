@@ -1,18 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import styles from "./Experience.module.css";
 
 const SERVICES = [
   "AI & Machine Learning",
-  "Generative AI (Gen AI)",
-  "Agentic AI",
+  "Generative & Agentic AI",
   "SaaS Development",
   "UI/UX Design",
   "Dev Tools & Full Stack",
-  "Data & Analytics",
-  "Cybersecurity & Reliability",
   "Tech Consulting & Strategy"
 ];
 
@@ -21,7 +19,7 @@ export default function Experience() {
     <section className={styles.experienceSection} id="services">
       <div className={styles.header}>
         <h2 className={styles.title}>We build experience</h2>
-        <a href="#services" className={styles.link}>Know more —</a>
+        <Link href="/services" className={styles.link}>Know more —</Link>
       </div>
 
       <div className={styles.content}>
