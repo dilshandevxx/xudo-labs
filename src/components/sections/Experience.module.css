@@ -1,5 +1,5 @@
 .experienceSection {
-  padding: 10rem var(--container-padding);
+  padding: clamp(5rem, 15vw, 10rem) var(--container-padding);
   border-bottom: 1px solid var(--border);
 }
 

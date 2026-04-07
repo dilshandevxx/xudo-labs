@@ -1,5 +1,5 @@
 .workSection {
-  padding: 10rem var(--container-padding);
+  padding: clamp(5rem, 15vw, 10rem) var(--container-padding);
   display: flex;
   flex-direction: column;
   align-items: center;

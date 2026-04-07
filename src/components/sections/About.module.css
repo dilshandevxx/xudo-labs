@@ -1,5 +1,5 @@
 .aboutSection {
-  padding: 10rem var(--container-padding);
+  padding: clamp(5rem, 15vw, 10rem) var(--container-padding);
   display: grid;
   grid-template-columns: 1fr;
   gap: 4rem;
