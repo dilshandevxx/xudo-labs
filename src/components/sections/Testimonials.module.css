@@ -1,84 +1,166 @@
 .testimonialsSection {
-  padding: clamp(5rem, 15vw, 10rem) var(--container-padding);
+  padding: clamp(6rem, 15vw, 12rem) var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--background);
+}
+
+.header {
+  margin-bottom: 6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 2rem;
+}
+
+.sectionLabel {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.quoteWrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bgQuoteMark {
+  position: absolute;
+  top: -4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(15rem, 30vw, 30rem);
+  color: rgba(255, 255, 255, 0.02);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.activeQuoteContainer {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border-bottom: 1px solid var(--border);
+  gap: 3rem;
+  width: 100%;
 }
 
-.subtitle {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  margin-bottom: 1rem;
-}
-
-.title {
+.quoteText {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 4rem);
-  text-transform: uppercase;
-  margin-bottom: 6rem;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 400;
+  color: var(--foreground);
+  margin: 0;
+  letter-spacing: -0.02em;
+  max-width: 90%;
 }
 
-.quoteContainer {
-  max-width: 800px;
+.authorBlock {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.authorDetails {
   display: flex;
   flex-direction: column;
+  text-align: left;
+}
+
+.authorName {
+  font-family: var(--font-body);
+  color: var(--foreground);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.authorRole {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #e4ff50;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.2rem;
+}
+
+.controls {
+  position: relative;
+  z-index: 2;
+  margin-top: 6rem;
+  display: flex;
   align-items: center;
   gap: 2rem;
 }
 
-.avatar {
-  width: 80px;
-  height: 80px;
+.navButton {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  overflow: hidden;
-  position: relative;
-  /* border: 2px solid var(--border); */
-}
-
-.quote {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  line-height: 1.4;
-  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.author {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
+.navButton:hover {
+  background: var(--foreground);
+  color: var(--background);
+  border-color: var(--foreground);
+  transform: scale(1.05);
+}
+
+.pagination {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
   color: var(--muted);
-  text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
-.authorName {
-  color: var(--foreground);
-  font-weight: 700;
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-.dots {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 2rem;
-}
-
-.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--muted);
-  opacity: 0.5;
-  transition: opacity 0.3s ease;
-}
-
-.dotActive {
-  background-color: var(--foreground);
-  opacity: 1;
+@media (max-width: 768px) {
+  .quoteWrapper {
+    padding: 2rem 0;
+  }
+  .bgQuoteMark {
+    top: -2rem;
+    font-size: clamp(10rem, 25vw, 15rem);
+  }
+  .authorBlock {
+    flex-direction: column;
+    text-align: center;
+  }
+  .authorDetails {
+    text-align: center;
+  }
+  .controls {
+    margin-top: 4rem;
+  }
+  .navButton {
+    width: 50px;
+    height: 50px;
+  }
 }
