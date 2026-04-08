@@ -255,4 +255,56 @@
   transform: scale(1.05);
 }
 
+/* =========================================================
+   MOBILE OVERRIDE: Massive Stacked Typography List
+   ========================================================= */
+@media (max-width: 1023px) {
+  .accordionContainer {
+    border-top: none;
+    margin-bottom: 2rem;
+    gap: 0;
+  }
+
+  .accordionItem {
+    border-bottom: none;
+  }
+
+  .itemHeader {
+    display: block;
+    padding: 0;
+    pointer-events: none; /* Disable clicking on mobile */
+  }
+
+  /* Hide accordion UI elements on mobile */
+  .indexNumber,
+  .thumbnailSpacer,
+  .toggleBtn,
+  .expandedContent {
+    display: none !important;
+  }
+
+  /* Force massive bold typography stack */
+  .categoryTitle, 
+  .accordionItem.open .categoryTitle {
+    font-size: clamp(3rem, 12vw, 6rem);
+    font-weight: 600;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: rgba(255, 255, 255, 0.35); /* Grey text like screenshot */
+    transition: color 0.3s ease;
+    margin: 0;
+    padding-bottom: 0.2em; /* slight spacing */
+  }
+
+  /* Light up on touch/hover if supported */
+  .accordionItem:active .categoryTitle {
+    color: var(--foreground);
+  }
+
+  /* Also hide get started button to match the pure typography aesthetic */
+  .footerAction {
+    display: none;
+  }
+}
+
 
