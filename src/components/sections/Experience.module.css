@@ -329,48 +329,38 @@
   .mobileListView {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    /* The first item in the image doesn't have a top border, but we can add a general top border if we wanted. I'll omit it to match the specific screenshot where only bottom borders exist between them */
   }
 
   .mobileListItem {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 1.25rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: opacity 0.3s ease;
   }
 
-  .mobileListItem:active .mobileListArrow {
-    transform: translateX(4px);
+  .mobileListItem:hover {
+    opacity: 0.7;
+  }
+
+  .mobileListIndex {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--foreground);
+    line-height: 1;
   }
 
   .mobileListTitle {
     font-family: var(--font-body);
-    font-size: 1.2rem;
-    color: #ffffff;
-    font-weight: 500;
-  }
-
-  .mobileListRight {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .mobileListIndex {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-
-  .mobileListArrow {
-    color: #ffffff;
-    font-family: var(--font-mono);
     font-size: 1rem;
-    transition: transform 0.3s ease;
+    color: var(--foreground);
+    font-weight: 400;
+    line-height: 1;
+    margin: 0;
+    text-transform: none; /* or capitalize if desired, image is "Multimedia design" */
   }
 }
 
