@@ -3,10 +3,20 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: relative;
   overflow: hidden;
+}
+
+/* =========================================
+   DESKTOP LAYOUT (Hidden on mobile)
+   ========================================= */
+.desktopHero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .titleContainer {
@@ -58,3 +68,125 @@
   height: 60px;
   background: linear-gradient(to bottom, var(--muted) 0%, transparent 100%);
 }
+
+/* Hide desktop view on mobile screens */
+@media (max-width: 768px) {
+  .desktopHero {
+    display: none !important;
+  }
+}
+
+/* =========================================
+   MOBILE LAYOUT (Hidden on desktop)
+   ========================================= */
+.mobileHero {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .mobileHero {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 var(--container-padding);
+    padding-top: 4rem; /* Safe space from header */
+  }
+
+  .mobileTopStar {
+    margin-bottom: 2rem;
+  }
+
+  /* Center block is standard relative wrapper */
+  .mobileCenterBlock {
+    position: relative;
+    width: 100%;
+    height: 45vh; /* enough space for images to fit */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  /* Text sits on top (z-index 10) */
+  .mobileTitle {
+    position: absolute;
+    z-index: 10;
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 23vw, 8rem);
+    letter-spacing: 0.05em;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Left image overlaps bottom left */
+  .mobileImgLeft {
+    position: absolute;
+    left: 0%;
+    top: 53%;
+    width: 42vw;
+    aspect-ratio: 1;
+    z-index: 5; /* behind title */
+    border-radius: 0;
+    overflow: hidden;
+    background-color: #f3e8f0;
+  }
+
+  /* Right image overlaps top right */
+  .mobileImgRight {
+    position: absolute;
+    right: 0%;
+    bottom: 28%;
+    width: 48vw;
+    aspect-ratio: 1;
+    z-index: 5; /* behind title */
+    border-radius: 0;
+    overflow: hidden;
+    background-color: #effbea;
+  }
+
+  .mobileImg {
+    object-fit: cover;
+    mix-blend-mode: multiply; /* Optional: helps if the generated images have slight white bg */
+  }
+
+  .mobileDesc {
+    font-family: var(--font-body);
+    font-size: 0.70rem;
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+    text-align: left;
+    font-weight: 500;
+    margin-top: 1rem;
+    max-width: 100%;
+    color: #ffffff;
+  }
+
+  .mobileScrollContainer {
+    margin-top: auto;
+    margin-bottom: 3rem;
+  }
+
+  .scrollPill {
+    width: 18px;
+    height: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    padding-top: 4px;
+  }
+
+  .scrollPillInner {
+    width: 2px;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 2px;
+  }
+}
+
