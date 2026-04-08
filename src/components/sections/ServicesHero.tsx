@@ -14,7 +14,7 @@ export default function ServicesHero() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
   };
 
   return (
@@ -30,7 +30,8 @@ export default function ServicesHero() {
         </motion.div>
         
         <motion.h1 className={styles.title} variants={itemVariants}>
-          Architecting The Future
+          <span className={styles.titleLine}>ARCHITECTING</span>
+          <span className={`${styles.titleLine} ${styles.titleHighlight}`}>THE FUTURE</span>
         </motion.h1>
         
         <motion.p className={styles.description} variants={itemVariants}>

@@ -52,10 +52,10 @@ export default function ServicesDetailed() {
           
           <motion.div 
             className={styles.textContent}
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
           >
             <div className={styles.indexContainer}>
               0{index + 1}
@@ -66,7 +66,7 @@ export default function ServicesDetailed() {
             <div className={styles.features}>
               {service.features.map((feature, fIndex) => (
                 <div key={fIndex} className={styles.featureItem}>
-                  <CheckCircle2 size={16} className={styles.featureIcon} />
+                  <CheckCircle2 size={16} strokeWidth={2} className={styles.featureIcon} />
                   {feature}
                 </div>
               ))}
@@ -78,7 +78,7 @@ export default function ServicesDetailed() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
           >
             <Image 
               src={service.image} 

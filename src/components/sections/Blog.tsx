@@ -7,24 +7,17 @@ import styles from "./Blog.module.css";
 const POSTS = [
   {
     id: 1,
-    title: "Creating a workspace that inspires all of us",
-    category: "Design",
-    date: "Aug 12, 2023",
-    image: "/images/hero.png"
+    title: "Curating a workplace that inspires all of us",
+    category: "MARKETING",
+    date: "February 3, 2021",
+    image: "/images/hero.png" // Placeholder image
   },
   {
     id: 2,
-    title: "Designers who changed the web with workflow",
-    category: "Agency",
-    date: "Sep 05, 2023",
-    image: "/images/about.png"
-  },
-  {
-    id: 3,
-    title: "Common clash between studio departments",
-    category: "Culture",
-    date: "Oct 22, 2023",
-    image: "/images/hero.png"
+    title: "Designers who changed the web with Webflow",
+    category: "DESIGN",
+    date: "February 25, 2021",
+    image: "/images/about.png" // Placeholder image
   }
 ];
 
@@ -32,8 +25,8 @@ export default function Blog() {
   return (
     <section className={styles.blogSection}>
       <div className={styles.header}>
-        <h2 className={styles.title}>From Blog</h2>
-        <a href="#" className={styles.link}>See All —</a>
+        <h2 className={styles.title}>Latest News</h2>
+        <a href="#" className={styles.linkButton}>ALL POST</a>
       </div>
 
       <div className={styles.grid}>
@@ -51,19 +44,16 @@ export default function Blog() {
                 src={post.image} 
                 alt={post.title} 
                 fill 
-                sizes="(max-width: 768px) 100vw, 33vw"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className={styles.image}
               />
             </div>
             
-            <div className={styles.meta}>
+            <div className={styles.contentWrapper}>
               <span className={styles.category}>{post.category}</span>
-              <span>{post.date}</span>
+              <h3 className={styles.blogTitle}>{post.title}</h3>
+              <span className={styles.date}>{post.date}</span>
             </div>
-            
-            <h3 className={styles.blogTitle}>{post.title}</h3>
-            
-            <div className={styles.readMore}>Read More</div>
           </motion.article>
         ))}
       </div>

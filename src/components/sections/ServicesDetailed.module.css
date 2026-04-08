@@ -1,31 +1,48 @@
 .detailedSection {
-  padding: clamp(5rem, 15vw, 10rem) var(--container-padding);
+  padding: clamp(5rem, 10vw, 8rem) var(--container-padding);
   display: flex;
   flex-direction: column;
-  gap: 8rem;
+  background: var(--background);
 }
 
 .serviceBlock {
   display: grid;
   grid-template-columns: 1fr;
   gap: 4rem;
-  align-items: start;
-  border-top: 1px solid var(--border);
-  padding-top: 4rem;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8rem 0;
+}
+
+.serviceBlock:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (min-width: 1024px) {
-  .serviceBlock {
+  .serviceBlock:nth-child(odd) {
     grid-template-columns: 1fr 1fr;
+  }
+  
+  .serviceBlock:nth-child(even) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .serviceBlock:nth-child(even) .textContent {
+    order: 2;
+  }
+  
+  .serviceBlock:nth-child(even) .imageWrapper {
+    order: 1;
   }
 }
 
 .indexContainer {
   font-family: var(--font-body);
-  font-size: 1.5rem;
-  color: var(--muted);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #DEC7A1;
   font-variant-numeric: tabular-nums;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 300;
 }
 
 .title {
@@ -38,46 +55,64 @@
 
 .description {
   color: var(--muted);
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  line-height: 1.8;
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  line-height: 1.6;
   margin-bottom: 3rem;
+  max-width: 500px;
 }
 
 .features {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
-}
-
-@media (min-width: 768px) {
-  .features {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 .featureItem {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   color: var(--foreground);
   font-size: 0.875rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 40px;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.featureItem:hover {
+  background: var(--foreground);
+  color: var(--background);
+  border-color: var(--foreground);
+}
+
+.featureItem:hover .featureIcon {
+  color: var(--background);
 }
 
 .featureIcon {
-  color: var(--muted);
+  color: #DEC7A1;
+  transition: color 0.3s ease;
 }
 
 .imageWrapper {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
-  border-radius: 4px;
+  border-radius: 2px;
   overflow: hidden;
-  background: var(--border);
+  background: var(--background);
 }
 
 .image {
   object-fit: cover;
+  filter: grayscale(20%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.serviceBlock:hover .image {
+  transform: scale(1.05);
+  filter: grayscale(0%);
 }

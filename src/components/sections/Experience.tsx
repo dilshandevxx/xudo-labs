@@ -1,73 +1,166 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Plus, Minus } from "lucide-react";
 import styles from "./Experience.module.css";
 
-const SERVICES = [
-  "AI & Machine Learning",
-  "Generative & Agentic AI",
-  "SaaS Development",
-  "UI/UX Design",
-  "Dev Tools & Full Stack",
-  "Tech Consulting & Strategy"
+const SERVICES_DATA = [
+  {
+    category: "AI & ENGINEERING",
+    description: "Leverage state-of-the-art machine learning models and generative AI to build intelligent, future-proof systems.",
+    items: [
+      "Machine Learning Models",
+      "Deep Learning Solutions",
+      "Generative AI & LLMs",
+      "Computer Vision Systems",
+      "Natural Language Processing (NLP)",
+      "AI Chatbots & Assistants",
+      "Recommendation Systems",
+      "AI Model Deployment & Optimization"
+    ]
+  },
+  {
+    category: "AGENTIC & AUTOMATION SYSTEMS",
+    description: "Automate complex workflows and boost operational efficiency with autonomous agents and robust orchestrations.",
+    items: [
+      "Agentic Workflows (AutoGPT-style)",
+      "Multi-Agent Architectures",
+      "Business Process Automation",
+      "Workflow Orchestration",
+      "Robotic Process Automation (RPA)",
+      "AI-Powered Decision Systems"
+    ]
+  },
+  {
+    category: "SOFTWARE DEVELOPMENT",
+    description: "Architect and develop bespoke web properties, enterprise solutions, and custom SaaS platforms built for scale.",
+    items: [
+      "Custom Web Applications",
+      "SaaS Product Development",
+      "Enterprise Software Solutions",
+      "Backend Systems",
+      "Frontend Development",
+      "Full-Stack Development",
+      "API Development & Integration"
+    ]
+  },
+  {
+    category: "UI/UX DESIGN",
+    description: "Design intuitive and aesthetically brilliant digital experiences crafted to captivate audiences and increase conversions.",
+    items: [
+      "User Interface (UI) Design",
+      "User Experience (UX) Design",
+      "Interaction Design",
+      "Design Systems",
+      "Wireframing & Prototyping",
+      "High-Fidelity Prototypes",
+      "Awwwards-Level Web Design"
+    ]
+  },
+  {
+    category: "CLOUD & DEVOPS",
+    description: "Build incredibly resilient and fast cloud architectures tailored for modern, high-traffic applications.",
+    items: [
+      "Cloud Infrastructure",
+      "CI/CD Pipeline Setup",
+      "Docker & Kubernetes",
+      "Serverless Architecture",
+      "DevOps Automation",
+      "Performance Optimization",
+      "Monitoring & Logging Systems"
+    ]
+  },
+  {
+    category: "AUTOMATION & SCALING",
+    description: "Scale your systems seamlessly and process millions of events with optimized, asynchronous backend infrastructures.",
+    items: [
+      "Process Automation",
+      "AI Workflow Automation",
+      "System Scaling Architecture",
+      "Microservices Architecture",
+      "Event-Driven Systems",
+      "Queue Systems"
+    ]
+  },
+  {
+    category: "MOBILE & CROSS-PLATFORM",
+    description: "Deliver powerful applications consistently across every device with leading cross-platform development frameworks.",
+    items: [
+      "Mobile App Development",
+      "Progressive Web Apps (PWA)",
+      "Cross-Platform Solutions"
+    ]
+  }
 ];
 
 export default function Experience() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggleAccordion = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <section className={styles.experienceSection} id="services">
       <div className={styles.header}>
-        <h2 className={styles.title}>We build experience</h2>
-        <Link href="/services" className={styles.link}>Know more —</Link>
+        <div className={styles.subtitleWrapper}>
+          <span className={styles.dot} /> 
+          <span className={styles.subtitle}>What we do</span>
+        </div>
+        <h2 className={styles.globalTitle}>
+          Services. <sup className={styles.count}>({String(SERVICES_DATA.length).padStart(2, '0')})</sup>
+        </h2>
       </div>
 
-      <div className={styles.content}>
-        
-        {/* Left Column: Sticky Image & Info */}
-        <div className={styles.leftColumn}>
-          <div className={styles.stickyWrapper}>
-            <motion.div 
-              className={styles.imageWrapper}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
+      <div className={styles.accordionContainer}>
+        {SERVICES_DATA.map((service, index) => {
+          const isOpen = openIndex === index;
+          return (
+            <div 
+              key={index} 
+              className={`${styles.accordionItem} ${isOpen ? styles.open : ""}`}
             >
-              <Image 
-                src="/images/about.png" 
-                alt="Our Services" 
-                fill 
-                sizes="(max-width: 1024px) 100vw, 33vw"
-                className={styles.image} 
-              />
-            </motion.div>
-            <p className={styles.info}>
-              We provide cutting-edge digital solutions tailored to the modern tech landscape. 
-              From deep learning architectures to robust SaaS platforms, we architect your future.
-            </p>
-          </div>
-        </div>
-
-        {/* Right Column: List of Services */}
-        <div className={styles.servicesList}>
-          {SERVICES.map((service, index) => (
-            <motion.div 
-              key={index}
-              className={styles.serviceItem}
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <div className={styles.serviceName}>{service}</div>
-              <div className={styles.serviceNum}>
-                {String(index + 1).padStart(2, '0')}
+              <div 
+                className={styles.itemHeader}
+                onClick={() => toggleAccordion(index)}
+              >
+                <div className={styles.indexNumber}>({String(index + 1).padStart(3, '0')})</div>
+                <h3 className={styles.categoryTitle}>{service.category}</h3>
+                <button className={styles.toggleBtn}>
+                  {isOpen ? <Minus size={16} strokeWidth={1.5} /> : <Plus size={16} strokeWidth={1.5} />}
+                </button>
               </div>
-            </motion.div>
-          ))}
-        </div>
-
+              
+              <AnimatePresence>
+                {isOpen && (
+                  <motion.div 
+                    className={styles.expandedContent}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <div className={styles.expandedInner}>
+                      <div className={styles.expandedText}>
+                        <p className={styles.description}>{service.description}</p>
+                      </div>
+                      
+                      <div className={styles.tagsContainer}>
+                        <div className={styles.tagsLabel}>Categories</div>
+                        <div className={styles.tagsList}>
+                          {service.items.map((item, i) => (
+                            <span key={i} className={styles.tag}>{item}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
