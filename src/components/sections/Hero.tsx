@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Sun } from "lucide-react";
 import styles from "./Hero.module.css";
 
 export default function Hero() {

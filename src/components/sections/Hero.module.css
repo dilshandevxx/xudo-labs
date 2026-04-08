@@ -84,109 +84,114 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 100vh;
+  }
+
   .mobileHero {
     display: flex !important;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
+    height: auto;
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+  }
+
+  .mobileTopText {
+    font-family: var(--font-body);
+    font-size: clamp(1.5rem, 6.5vw, 2.5rem);
+    line-height: 1.2;
+    text-align: center;
+    color: var(--foreground);
     padding: 0 var(--container-padding);
-    padding-top: 4rem; /* Safe space from header */
+    margin-bottom: 3rem;
+    font-weight: 400;
   }
 
-  .mobileTopStar {
-    margin-bottom: 2rem;
+  .mobileCenterMedia {
+    width: 100%;
+    height: 60vh;
+    min-height: 400px;
+    position: relative;
+    margin-bottom: 3rem;
   }
 
-  /* Center block is standard relative wrapper */
-  .mobileCenterBlock {
+  .mobileMainImg {
     position: relative;
     width: 100%;
-    height: 45vh; /* enough space for images to fit */
+    height: 100%;
+    background-color: var(--muted);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
-    margin-bottom: 1rem;
-  }
-
-  /* Text sits on top (z-index 10) */
-  .mobileTitle {
-    position: absolute;
-    z-index: 10;
-    font-family: var(--font-display);
-    font-size: clamp(5rem, 23vw, 8rem);
-    letter-spacing: 0.05em;
-    font-weight: 800;
-    color: #ffffff;
-    margin: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  /* Left image overlaps bottom left */
-  .mobileImgLeft {
-    position: absolute;
-    left: 0%;
-    top: 53%;
-    width: 42vw;
-    aspect-ratio: 1;
-    z-index: 5; /* behind title */
-    border-radius: 0;
-    overflow: hidden;
-    background-color: #f3e8f0;
-  }
-
-  /* Right image overlaps top right */
-  .mobileImgRight {
-    position: absolute;
-    right: 0%;
-    bottom: 28%;
-    width: 48vw;
-    aspect-ratio: 1;
-    z-index: 5; /* behind title */
-    border-radius: 0;
-    overflow: hidden;
-    background-color: #effbea;
+    padding-bottom: 2rem;
   }
 
   .mobileImg {
     object-fit: cover;
-    mix-blend-mode: multiply; /* Optional: helps if the generated images have slight white bg */
+    z-index: 0;
   }
 
-  .mobileDesc {
-    font-family: var(--font-body);
-    font-size: 0.70rem;
-    line-height: 1.6;
-    letter-spacing: 0.05em;
-    text-align: left;
-    font-weight: 500;
-    margin-top: 1rem;
-    max-width: 100%;
-    color: #ffffff;
-  }
-
-  .mobileScrollContainer {
-    margin-top: auto;
-    margin-bottom: 3rem;
-  }
-
-  .scrollPill {
-    width: 18px;
-    height: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 20px;
+  .imageTags {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
-    justify-content: center;
-    padding-top: 4px;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 2;
+    align-items: center;
   }
 
-  .scrollPillInner {
-    width: 2px;
-    height: 6px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 2px;
+  .tag {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+  }
+
+  .imageOverlayText {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 15vw, 6rem);
+    color: #fce7da;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+
+  .mobileBottomDesc {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--foreground);
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .mobileButton {
+    background-color: #a4ff4f;
+    color: #000000;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
   }
 }
 

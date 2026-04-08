@@ -12,55 +12,49 @@ export default function About() {
     offset: ["start end", "end start"],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-  const y2 = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
 
   return (
     <section className={styles.aboutSection} ref={containerRef}>
-      <div className={styles.imageGrid}>
-        <motion.div style={{ y: y1 }} className={styles.mainImage}>
-          <Image 
-            src="/images/hero.png" 
-            alt="Workspace" 
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            style={{ objectFit: 'cover', borderRadius: '4px' }}
-          />
-        </motion.div>
-        <motion.div style={{ y: y2 }} className={styles.secondaryImage}>
-          <Image 
-            src="/images/about.png" 
-            alt="Our Team" 
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            style={{ objectFit: 'cover', borderRadius: '4px' }}
-          />
-        </motion.div>
-      </div>
-
-      <div className={styles.textContent}>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
+      <div className={styles.container}>
+        <motion.div 
+          className={styles.header}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className={styles.title}>
-            WHO WE <span>ARE</span>
-          </h2>
+            <span className={styles.label}>[ WHO WE ARE ]</span>
         </motion.div>
         
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        >
-          <p className={styles.description}>
-            We are a digital agency focused on building high-end web experiences. 
-            We blend design and technology to create premium identities for brands who want to stand out.
-          </p>
-        </motion.div>
+        <div className={styles.content}>
+          <motion.div
+            className={styles.textContent}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          >
+            <h2 className={styles.statement}>
+              We are a digital agency focused on building high-end web experiences.{' '}
+              <span className={styles.mutedText}>
+                We blend design and technology to create premium identities for brands who want to stand out.
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className={styles.imageWrapper}>
+            <motion.div style={{ y }} className={styles.imageInner}>
+              <Image 
+                src="/images/about.png" 
+                alt="Who We Are" 
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className={styles.image}
+              />
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
