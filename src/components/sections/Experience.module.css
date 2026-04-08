@@ -331,22 +331,42 @@
   .mobileListItem {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    justify-content: space-between;
     padding: 1.5rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: background 0.3s ease;
   }
 
-  .mobileListIndex {
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    color: #ffffff;
+  .mobileListItem:active .mobileListArrow {
+    transform: translateX(4px);
   }
 
   .mobileListTitle {
     font-family: var(--font-body);
-    font-size: 1.125rem;
+    font-size: 1.2rem;
     color: #ffffff;
-    font-weight: 400;
+    font-weight: 500;
+  }
+
+  .mobileListRight {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .mobileListIndex {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .mobileListArrow {
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    transition: transform 0.3s ease;
   }
 }
 

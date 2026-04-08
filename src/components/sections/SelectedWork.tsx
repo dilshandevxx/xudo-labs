@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Sun } from "lucide-react";
 import styles from "./SelectedWork.module.css";
 import { PROJECTS } from "@/data/projects";
 
@@ -11,7 +10,7 @@ export default function SelectedWork() {
   return (
     <section className={styles.workSection}>
       <div className={styles.header}>
-        <Sun className={styles.icon} />
+      <div className={styles.header}>
         <h2 className={styles.title}>Our Work</h2>
       </div>
 

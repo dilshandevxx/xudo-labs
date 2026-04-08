@@ -216,8 +216,11 @@ export default function Experience() {
         <div className={styles.mobileListView}>
           {SERVICES_DATA.map((service, index) => (
             <div key={index} className={styles.mobileListItem}>
-              <span className={styles.mobileListIndex}>{String(index + 1).padStart(2, '0')}.</span>
-              <span className={styles.mobileListTitle}>{service.category}</span>
+              <h3 className={styles.mobileListTitle}>{service.category}</h3>
+              <div className={styles.mobileListRight}>
+                <span className={styles.mobileListIndex}>(0.0.{index + 1})</span>
+                <span className={styles.mobileListArrow}>→</span>
+              </div>
             </div>
           ))}
         </div>
