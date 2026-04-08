@@ -114,7 +114,7 @@ export default function Experience() {
             <span className={styles.subtitle}>What we do</span>
           </div>
           <h2 className={styles.globalTitle}>
-            Services. <sup className={styles.count}>({SERVICES_DATA.length})</sup>
+            Services.
           </h2>
         </div>
 
