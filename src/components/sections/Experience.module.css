@@ -22,15 +22,15 @@
 .dot {
   width: 8px;
   height: 8px;
-  background: #e4ff50;
+  background: var(--foreground);
   border-radius: 50%;
   animation: pulse 2.5s infinite cubic-bezier(0.66, 0, 0, 1);
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(228, 255, 80, 0.6); }
-  70% { box-shadow: 0 0 0 15px rgba(228, 255, 80, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(228, 255, 80, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(240, 240, 240, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(240, 240, 240, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(240, 240, 240, 0); }
 }
 
 .subtitle {
@@ -58,7 +58,7 @@
 .count {
   font-family: var(--font-mono);
   font-size: clamp(1rem, 2vw, 1.5rem);
-  color: #e4ff50;
+  color: var(--muted);
   font-weight: 400;
   top: 0.5em; /* Shift down slightly from superscript */
 }
