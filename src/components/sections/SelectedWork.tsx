@@ -10,7 +10,6 @@ export default function SelectedWork() {
   return (
     <section className={styles.workSection}>
       <div className={styles.header}>
-      <div className={styles.header}>
         <h2 className={styles.title}>Our Work</h2>
       </div>
 
