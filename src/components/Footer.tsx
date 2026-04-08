@@ -25,7 +25,7 @@ export default function Footer() {
       </div>
 
       <div className={styles.copyright}>
-        © This is a <span className={styles.highlight}>Deni Bozo</span> template powered by <span className={styles.highlight}>Webflow.</span>
+        © {new Date().getFullYear()} XUDO Labs. All rights reserved.
       </div>
     </footer>
   );
