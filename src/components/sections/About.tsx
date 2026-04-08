@@ -46,7 +46,7 @@ export default function About() {
           <div className={styles.imageWrapper}>
             <motion.div style={{ y }} className={styles.imageInner}>
               <Image 
-                src="/images/about.png" 
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop" 
                 alt="Who We Are" 
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
