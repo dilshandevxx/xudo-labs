@@ -203,10 +203,10 @@ export default function Experience() {
       <div className={styles.mobileLayout}>
         <div className={styles.mobileHeaderBlock}>
           <h2 className={styles.mobileMainHeading}>
-            Services that go above and beyond, locally and creatively.
+            Services that go above and beyond.
           </h2>
           <p className={styles.mobileDesc}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
+            We partner with ambitious founders to engineer scalable architectures and craft award-winning digital experiences that enrich lives and businesses.
           </p>
           <button className={styles.mobileScheduleBtn}>
             Schedule a call

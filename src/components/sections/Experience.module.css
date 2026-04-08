@@ -286,44 +286,51 @@
   }
 
   .mobileHeaderBlock {
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .mobileMainHeading {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 9vw, 3.5rem);
-    line-height: 1.1;
-    font-weight: 500;
+    font-size: clamp(3rem, 10vw, 4rem);
+    line-height: 1;
+    margin-bottom: 2rem;
+    color: var(--foreground);
+    text-transform: uppercase;
     letter-spacing: -0.02em;
-    color: #ffffff;
-    margin: 0 0 2rem 0;
+    max-width: 90%;
   }
 
   .mobileDesc {
     font-family: var(--font-body);
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.5;
     color: var(--muted);
-    margin: 0 0 2.5rem 0;
+    margin-bottom: 3rem;
+    max-width: 85%;
+    padding-left: 1rem;
+    border-left: 1px solid var(--muted);
   }
 
   .mobileScheduleBtn {
-    background: #ffffff;
-    color: #000000;
-    border: none;
-    border-radius: 50px;
-    padding: 1rem 2rem;
+    background-color: transparent;
+    color: var(--foreground);
+    border: 1px solid var(--foreground);
+    padding: 1.2rem 2.5rem;
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 500;
     cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-    align-self: flex-start;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
   }
 
   .mobileScheduleBtn:active {
-    transform: scale(0.95);
-    opacity: 0.9;
+    background-color: var(--foreground);
+    color: var(--background);
   }
 
   .mobileListView {
