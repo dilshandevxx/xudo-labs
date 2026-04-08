@@ -153,3 +153,14 @@
 .projectCard:hover .viewBadge {
   transform: scale(1.1);
 }
+
+/* MOBILE OVERRIDES */
+@media (max-width: 768px) {
+  .overlay { padding: 1.5rem; }
+  .grid { gap: 3rem; }
+  .projectName { font-size: 1.1rem; }
+  .viewBadge {
+    width: 60px; height: 60px; font-size: 0.6rem;
+    bottom: 1rem !important; right: 1rem !important; left: auto !important;
+  }
+}

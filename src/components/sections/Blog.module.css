@@ -126,3 +126,9 @@
   color: var(--muted);
 }
 
+/* MOBILE OVERRIDES */
+@media (max-width: 768px) {
+  .contentWrapper { padding: 1.5rem; }
+  .blogTitle { font-size: 1.25rem; margin-bottom: 1rem; }
+  .category { margin-bottom: 1rem; }
+}

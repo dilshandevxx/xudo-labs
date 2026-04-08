@@ -304,19 +304,22 @@
   }
 
   .mobileScheduleBtn {
-    background: transparent;
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 40px;
-    padding: 0.8rem 1.5rem;
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2rem;
     font-family: var(--font-body);
-    font-size: 0.875rem;
+    font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    align-self: flex-start;
   }
 
   .mobileScheduleBtn:active {
-    background: rgba(255, 255, 255, 0.1);
+    transform: scale(0.95);
+    opacity: 0.9;
   }
 
   .mobileListView {

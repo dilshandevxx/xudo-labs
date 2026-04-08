@@ -90,3 +90,9 @@
   filter: grayscale(0%);
   transform: scale(1.05);
 }
+
+/* MOBILE OVERRIDES */
+@media (max-width: 768px) {
+  .content { gap: 2.5rem; }
+  .imageWrapper { aspect-ratio: 1 / 1; }
+}

@@ -91,3 +91,17 @@
 .contactLink:hover {
   opacity: 0.7;
 }
+
+/* MOBILE OVERRIDES */
+@media (max-width: 768px) {
+  .navLink { 
+    font-size: clamp(2rem, 10vw, 3rem); 
+    line-height: 1; 
+  }
+  .menuFooter {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    justify-content: center;
+  }
+}

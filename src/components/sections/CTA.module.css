@@ -76,3 +76,10 @@
   font-size: 0.875rem;
   line-height: 1.6;
 }
+
+/* MOBILE OVERRIDES */
+@media (max-width: 768px) {
+  .ctaSection { gap: 2.5rem; }
+  .imageWrapper { aspect-ratio: 16 / 9; }
+  .descriptionBox { gap: 1.5rem; }
+}
