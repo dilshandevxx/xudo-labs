@@ -1,41 +1,37 @@
-.blogSection {
-  padding: clamp(5rem, 15vw, 10rem) var(--container-padding);
-  border-bottom: 1px solid var(--border);
+.blogPage {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
 }
 
-.header {
+.hero {
+  padding: clamp(8rem, 15vw, 12rem) var(--container-padding) clamp(4rem, 10vw, 8rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 4rem;
-  gap: 1.5rem;
+  text-align: center;
 }
 
 .title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 500;
-  text-transform: none;
   margin: 0;
+  letter-spacing: -0.02em;
 }
 
-.linkButton {
+.subtitle {
   font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--foreground);
-  background: #111111;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background 0.3s ease;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--muted);
+  margin-top: 1.5rem;
+  max-width: 600px;
+  line-height: 1.6;
 }
 
-.linkButton:hover {
-  background: #222222;
+.content {
+  padding: 0 var(--container-padding) clamp(6rem, 15vw, 12rem);
 }
 
 .grid {
@@ -67,6 +63,7 @@
   border-radius: 4px;
   overflow: hidden;
   transition: transform 0.3s ease;
+  height: 100%;
 }
 
 .blogCard:hover {
@@ -125,4 +122,3 @@
   font-size: 0.875rem;
   color: var(--muted);
 }
-
