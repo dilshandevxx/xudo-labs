@@ -12,21 +12,21 @@ const REVIEWS = [
     quote: "Your reputation is more important than your paycheck, and your integrity.",
     author: "Ryan Holmes",
     role: "CEO of GlobalTech",
-    avatar: "/images/hero.png"
+    avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"
   },
   {
     id: 2,
     quote: "They don't just build websites, they engineer digital experiences.",
     author: "Elena Rostova",
     role: "VP of Product",
-    avatar: "/images/hero.png"
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop"
   },
   {
     id: 3,
     quote: "Unparalleled execution. Our conversion rates have doubled since launch.",
     author: "Marcus Chen",
     role: "Founder, Zenith",
-    avatar: "/images/hero.png"
+    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop"
   }
 ];
 
