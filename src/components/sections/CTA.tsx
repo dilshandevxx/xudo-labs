@@ -15,7 +15,7 @@ export default function CTA() {
         transition={{ duration: 0.8 }}
       >
         <Image 
-          src="/images/portfolio1.png" 
+          src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200&auto=format&fit=crop" 
           alt="Active Lifestyle" 
           fill 
           sizes="(max-width: 1024px) 100vw, 50vw"
