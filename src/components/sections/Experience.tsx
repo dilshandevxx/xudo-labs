@@ -140,7 +140,7 @@ export default function Experience() {
                           initial={{ opacity: 0, scale: 0.8, filter: "blur(4px)" }}
                           animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                           exit={{ opacity: 0, scale: 0.8, filter: "blur(4px)" }}
-                          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as any }}
+                          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                         >
                           <Image
                             src={service.image}
@@ -167,7 +167,7 @@ export default function Experience() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as any }}
+                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     >
                       <div className={styles.expandedInner}>
                         <div className={styles.expandedText}>

@@ -15,7 +15,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     transition: { duration: 0.8, ease: "easeOut" }
-  };
+  } as const;
 
   return (
     <main className={styles.main}>
