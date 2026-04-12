@@ -1,9 +1,16 @@
 .overlay {
   position: fixed;
+<<<<<<< main
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+=======
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+>>>>>>> local
   background-color: var(--background);
   z-index: 90;
   display: flex;
