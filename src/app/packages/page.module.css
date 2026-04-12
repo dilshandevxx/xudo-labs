@@ -1,136 +1,185 @@
 .container {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 10rem var(--container-padding);
+  background: #000;
+  color: #fff;
 }
 
-.header {
-  margin-bottom: 8rem;
+/* Kinetic Intro */
+.intro {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 4rem;
+  margin-bottom: 5rem;
 }
 
-.label {
+.introLabel {
   font-family: var(--font-inter);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.5rem;
   text-transform: uppercase;
-  letter-spacing: 0.4rem;
   color: #666;
-  display: block;
   margin-bottom: 2rem;
 }
 
-.title {
+.introTitle {
   font-family: var(--font-syne);
-  font-size: clamp(3rem, 10vw, 8rem);
+  font-size: clamp(3rem, 12vw, 10rem);
   text-transform: uppercase;
   font-weight: 700;
-  letter-spacing: -0.05em;
-  margin: 0;
+  letter-spacing: -0.06em;
+  line-height: 0.85;
 }
 
-.subtitle {
-  font-family: var(--font-inter);
-  font-size: 1.25rem;
-  color: #666;
-  margin-top: 2rem;
-  max-width: 600px;
-}
-
-.categoriesGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 8rem;
-}
-
-.categoryBlock {
+/* Editorial Modular Grid */
+.categorySection {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  margin-bottom: 15rem;
+  padding-top: 5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (min-width: 1024px) {
-  .categoryBlock {
-    grid-template-columns: 350px 1fr;
+  .categorySection {
+    grid-template-columns: 35% 1fr;
+    gap: 5rem;
   }
+}
+
+.catInfo {
+  position: relative;
+}
+
+.stickyHeader {
+  position: sticky;
+  top: 8rem;
+}
+
+.catNumber {
+  font-family: var(--font-inter);
+  font-size: 0.7rem;
+  color: #00ffa3; /* Mint accent */
+  letter-spacing: 0.2rem;
+  margin-bottom: 1rem;
+  display: block;
 }
 
 .catTitle {
   font-family: var(--font-syne);
-  font-size: 2rem;
+  font-size: clamp(2rem, 5vw, 4rem);
   text-transform: uppercase;
-  letter-spacing: -0.02em;
-  color: #ffffff; /* pure white instead of red */
+  line-height: 1;
+  margin-bottom: 2rem;
 }
 
-.itemsList {
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+.catDesc {
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
 }
 
-.item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Technical Spec Table (Architectural feel) */
+.specTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 100px;
   padding: 3rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
-}
-
-.item:hover {
-  background: rgba(255, 255, 255, 0.02);
-  padding-left: 1.5rem;
-}
-
-.itemMain {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.itemName {
-  font-family: var(--font-syne);
-  font-size: 1.5rem;
-  text-transform: uppercase;
-}
-
-.itemDesc {
-  font-family: var(--font-inter);
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.itemPrice {
-  font-family: var(--font-syne);
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #fff;
-}
-
-.backHome {
-  margin-top: 10rem;
-}
-
-.backBtn {
-  font-family: var(--font-inter);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  color: #666;
-  text-decoration: none;
-  border-bottom: 1px solid #333;
-  padding-bottom: 0.5rem;
-  transition: all 0.3s ease;
-}
-
-.backBtn:hover {
-  color: #fff;
-  border-color: #fff;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (max-width: 768px) {
-  .header { margin-bottom: 4rem; }
-  .item { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-  .itemPrice { margin-left: 0; }
+  .specRow {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem 0;
+  }
+}
+
+.specRow:hover {
+  background: rgba(255, 255, 255, 0.02);
+  padding-left: 2rem;
+}
+
+.specModule {
+  font-family: var(--font-syne);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.specDeliverable {
+  font-family: var(--font-inter);
+  font-size: 0.9rem;
+  color: #777;
+  max-width: 400px;
+}
+
+.specPrice {
+  font-family: var(--font-inter);
+  font-size: 0.8rem;
+  color: #00ffa3;
+  text-align: right;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .specPrice { text-align: left; }
+}
+
+/* The Inquiry Monolith (Footer CTA) */
+.monolith {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.monolithTitle {
+  font-family: var(--font-syne);
+  font-size: clamp(3rem, 10vw, 8rem);
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.monolithBtn {
+  margin-top: 5rem;
+  padding: 2rem 5rem;
+  background: #fff;
+  color: #000;
+  font-family: var(--font-inter);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.4s ease;
+}
+
+.monolithBtn:hover {
+  background: #00ffa3;
+  color: #000;
+  transform: scale(1.05);
+}
+
+.backHome {
+  margin-top: 5rem;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  color: #444;
 }

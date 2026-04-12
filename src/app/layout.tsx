@@ -19,8 +19,12 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "XŪDŪ | Digital Studio",
-  description: "Award-winning digital studio focused on high-end web experiences.",
+  title: {
+    default: "XŪDŪ | High-End Digital Production Studio",
+    template: "%s | XŪDŪ"
+  },
+  description: "A collective of engineers and designers structuring the future through architectural digital experiences, brand identity systems, and intelligent AI suites.",
+  keywords: ["Digital Studio", "Web Production", "AI Systems", "Next.js", "Awwwards", "Luxury Branding"],
 };
 
 export default function RootLayout({
