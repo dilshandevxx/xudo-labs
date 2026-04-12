@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { motion, useScroll, useSpring } from "framer-motion";
-import { Project, PROJECTS } from "@/data/projects";
+import { motion } from "framer-motion";
+import { Project } from "@/data/projects";
 import styles from "./page.module.css";
 
 interface ProjectDetailClientProps {
@@ -11,141 +10,145 @@ interface ProjectDetailClientProps {
 }
 
 export default function ProjectDetailClient({ project }: ProjectDetailClientProps) {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
-  // Logic to find next project
-  const currentIndex = PROJECTS.findIndex(p => p.id === project.id);
-  const nextProject = PROJECTS[(currentIndex + 1) % PROJECTS.length];
+  // Simple fade entrance for the brutalist layout
+  const fadeIn = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    transition: { duration: 0.8, ease: "easeOut" }
+  };
 
   return (
     <main className={styles.main}>
-      {/* Top Header Progress (Simulating Story Player) */}
-      <div className={styles.progressContainer}>
-        <div className={styles.progressBar}>
-          <motion.div className={styles.progressFill} style={{ scaleX }} />
+      
+      {/* HEADER SECTION */}
+      <header className={styles.header}>
+        <div className={styles.headerLeft}>
+          <motion.div {...fadeIn}>
+            <span className={styles.category}>{project.category}</span>
+            <div className={styles.metaGrid}>
+              <div className={styles.metaItem}>
+                <span className={styles.metaLabel}>Role</span>
+                <span className={styles.metaValue}>{project.role}</span>
+              </div>
+              <div className={styles.metaItem}>
+                <span className={styles.metaLabel}>Year</span>
+                <span className={styles.metaValue}>{project.year}</span>
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </div>
-
-      {/* Floating UI Navigation Shell */}
-      <header className={styles.navCapsule}>
-        <Link href="/" className={styles.navItem}>Home</Link>
-        <span className={`${styles.navItem} ${styles.navItemActive}`}>Stories</span>
-        <span className={styles.navItem}>Creators</span>
-        <span className={styles.navItem}>Studio</span>
+        
+        <div className={styles.headerRight}>
+          <motion.h1 
+            className={styles.title}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {project.title}
+          </motion.h1>
+          <motion.p 
+            className={styles.metaValue} 
+            style={{ marginTop: '2rem', opacity: 0.4 }}
+            {...fadeIn}
+          >
+            Project Archive // 0{project.id}
+          </motion.p>
+        </div>
       </header>
 
-      {/* Side Control Icons (Glass Circles) */}
-      <Link href="/work" className={`${styles.iconBtn} ${styles.iconLeft}`} title="Back to Archive">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-          <path d="M19 12H5M12 19l-7-7 7-7" />
-        </svg>
-      </Link>
-
-      <div className={`${styles.iconBtn} ${styles.iconRight}`}>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-          <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-        </svg>
-      </div>
-
-      <div className={`${styles.iconBtn} ${styles.iconRight2}`}>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-          <path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" />
-        </svg>
-      </div>
-
-      <article className={styles.article}>
-        {/* HERO: Vertical Info in Glass Card */}
-        <motion.div 
-          className={styles.glassHeader}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className={styles.category}>{project.category}</span>
-          <h1 className={styles.title}>{project.title}</h1>
-          
-          <div className={styles.metaStack}>
-            <div className={styles.metaItem}>{project.client}</div>
-            <div className={styles.metaItem}>{project.role}</div>
-            <div className={styles.metaItem}>{project.year}</div>
-          </div>
-
-          <motion.a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.visitLive}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Visit Page
-          </motion.a>
-        </motion.div>
-
-        {/* NARRATIVE Sections in Separate Glass Cards */}
-        <motion.div 
-          className={styles.glassSection}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1 }}
-        >
-          <h3 className={styles.sectionTitle}>The Challenge</h3>
-          <p className={styles.sectionText}>{project.challenge}</p>
-        </motion.div>
-
-        <motion.div 
-          className={styles.glassSection}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          <h3 className={styles.sectionTitle}>The Solution</h3>
-          <p className={styles.sectionText}>{project.solution}</p>
-        </motion.div>
-
-        {/* FOOTER: 'Next Story' Card (Exact replication) */}
-        <footer className={styles.footer}>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+      {/* PROBLEM SECTION */}
+      <section className={styles.section}>
+        <div className={styles.sectionLeft}>
+          <motion.span 
+            className={styles.sectionLabel}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1 }}
           >
-            <Link href={`/work/${nextProject.slug}`} className={styles.nextStoryCard}>
-              <div className={styles.nextThumb}>
-                <Image
-                  src={nextProject.image}
-                  alt={nextProject.title}
-                  fill
-                  className={styles.image}
-                  sizes="70px"
-                />
-              </div>
-              <div className={styles.nextInfo}>
-                <span className={styles.nextLabel}>Next Story</span>
-                <h4 className={styles.nextTitle}>{nextProject.title} — {nextProject.category}</h4>
-              </div>
-            </Link>
-          </motion.div>
+            01 — The Problem
+          </motion.span>
+        </div>
+        <div className={styles.sectionRight}>
+          <motion.h2 
+            className={styles.sectionTitle}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Fragmented identity and market misalignment.
+          </motion.h2>
+          <motion.p 
+            className={styles.sectionDescription}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {project.challenge}
+          </motion.p>
+        </div>
+      </section>
 
-          <div style={{ marginTop: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Link href="/work" className={styles.iconBtn} style={{ position: 'static' }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transform: 'rotate(90deg)' }}>
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-            </Link>
-            <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1rem', marginTop: '1rem', color: '#666' }}>Back Up</span>
-          </div>
-        </footer>
+      {/* SOLUTION SECTION */}
+      <section className={styles.section}>
+        <div className={styles.sectionLeft}>
+          <motion.span 
+            className={styles.sectionLabel}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            02 — The Solution
+          </motion.span>
+        </div>
+        <div className={styles.sectionRight}>
+          <motion.h2 
+            className={styles.sectionTitle}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            A cohesive monolith for future scaling.
+          </motion.h2>
+          <motion.p 
+            className={styles.sectionDescription}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {project.solution}
+          </motion.p>
+        </div>
+      </section>
 
-      </article>
+      {/* CTA SECTION */}
+      <section className={styles.cta}>
+        <motion.a 
+          href={project.liveUrl} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className={styles.visitLink}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          EXPERIENCE LIVE
+          <span className={styles.visitSub}>Click to view project</span>
+        </motion.a>
+      </section>
+
+      {/* FOOTER */}
+      <footer className={styles.footer}>
+        <Link href="/work" className={styles.backLink}>
+          Back to Portfolio
+        </Link>
+      </footer>
+
     </main>
   );
 }

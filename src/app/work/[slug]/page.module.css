@@ -4,175 +4,217 @@
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
-  /* Deep Obsidian Backdrop: A single, very large soft glow to create depth */
-  background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
-              radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.02) 0%, transparent 40%);
 }
 
-/* Luxury Editorial Layout */
-.section {
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10rem var(--container-padding);
+/* The Structural Grid Background */
+.gridOverlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 1.5rem;
 }
 
-/* Header: The User-Approved Vertical Stack */
+.verticalLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  left: 25%;
+}
+
+.horizontalLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  top: 50%;
+}
+
+/* Header Section */
 .header {
-  min-height: 100vh;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  grid-template-rows: 1fr;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.headerLeft {
+  padding: 4rem 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.headerRight {
+  padding: 4rem 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
 }
 
 .category {
   font-family: var(--font-inter);
-  font-size: 0.75rem;
-  letter-spacing: 0.2rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.3rem;
   text-transform: uppercase;
-  color: #888;
-  margin-bottom: 2rem;
+  color: #666;
+  margin-bottom: 1rem;
 }
 
 .title {
   font-family: var(--font-syne);
-  font-size: clamp(4rem, 12vw, 10rem);
-  line-height: 0.9;
+  font-size: clamp(3rem, 10vw, 8rem);
+  line-height: 0.85;
   text-transform: uppercase;
   font-weight: 700;
+  letter-spacing: -0.05em;
   margin: 0;
-  letter-spacing: -0.04em;
 }
 
-.client {
-  font-family: var(--font-inter);
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: #666;
-  margin-top: 1rem;
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
 }
 
-.metaStack {
-  margin-top: 5rem;
+.metaItem {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.5rem;
 }
 
-.metaLine {
-  font-family: var(--font-inter);
-  font-size: 0.85rem;
+.metaLabel {
+  font-size: 0.55rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.2rem;
   color: #444;
 }
 
-/* Problem & Solution as Typographic Art */
-.storySection {
-  max-width: 1200px;
-  margin: 0 auto;
+.metaValue {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #fff;
 }
 
-.label {
-  display: block;
+/* Narrative Sections */
+.section {
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 60vh;
+}
+
+.sectionLeft {
+  padding: 4rem 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sectionRight {
+  padding: 6rem 4rem;
+}
+
+.sectionLabel {
   font-family: var(--font-inter);
   font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.4rem;
-  color: #ff3333;
-  margin-bottom: 4rem;
-}
-
-.statement {
-  font-family: var(--font-playfair); /* Luxury Serif */
-  font-size: clamp(2.5rem, 6vw, 6rem);
-  line-height: 1.1;
-  font-weight: 400;
-  color: #fff;
-  margin: 0;
-  max-width: 15ch;
-  /* Subtle glass card backdrop for the text block itself */
-  padding: 4rem;
-  background: rgba(255, 255, 255, 0.02);
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-}
-
-.description {
-  margin-top: 4rem;
-  font-family: var(--font-inter);
-  font-size: 1.25rem;
-  line-height: 1.6;
   color: #888;
+}
+
+.sectionTitle {
+  font-family: var(--font-syne);
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  max-width: 15ch;
+}
+
+.sectionDescription {
+  font-family: var(--font-inter);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #777;
   max-width: 600px;
   font-weight: 300;
 }
 
-/* Monolith "Visit" Button */
-.ctaSection {
-  min-height: 100vh;
+/* Call to Action */
+.cta {
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
-.visitBtn {
-  position: relative;
+.visitLink {
+  font-family: var(--font-syne);
+  font-size: clamp(3rem, 15vw, 12rem);
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 8rem 12rem;
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(40px);
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
 }
 
-.visitBtn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.8s ease;
+.visitLink:hover {
+  opacity: 0.3;
+  transform: scale(0.98);
 }
 
-.visitBtn:hover::before {
-  transform: translateX(100%);
-}
-
-.visitBtn:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: scale(1.02);
-}
-
-.btnText {
-  font-family: var(--font-syne);
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1rem;
-  color: #fff;
-  z-index: 1;
-}
-
-.btnSub {
+.visitSub {
   font-family: var(--font-inter);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  color: #666;
+  font-size: 0.8rem;
+  letter-spacing: 0.5rem;
   margin-top: 2rem;
-  z-index: 1;
+  color: #444;
+}
+
+/* Return Archive */
+.footer {
+  padding: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.backLink {
+  font-family: var(--font-inter);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: #444;
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {
-  .section { padding: 6rem 1.5rem; }
-  .statement { font-size: 2.5rem; padding: 2rem; }
-  .visitBtn { padding: 4rem 2rem; width: 100%; }
+  .header, .section {
+    grid-template-columns: 1fr;
+  }
+  
+  .headerLeft, .sectionLeft {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+  }
+  
+  .headerRight, .sectionRight {
+    padding: 3rem 2rem;
+  }
+  
+  .title { font-size: 3rem; }
+  .visitLink { font-size: 3rem; }
 }

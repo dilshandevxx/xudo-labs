@@ -1,0 +1,136 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10rem var(--container-padding);
+}
+
+.header {
+  margin-bottom: 8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 4rem;
+}
+
+.label {
+  font-family: var(--font-inter);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+  color: #666;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-family: var(--font-syne);
+  font-size: clamp(3rem, 10vw, 8rem);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--font-inter);
+  font-size: 1.25rem;
+  color: #666;
+  margin-top: 2rem;
+  max-width: 600px;
+}
+
+.categoriesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+}
+
+.categoryBlock {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .categoryBlock {
+    grid-template-columns: 350px 1fr;
+  }
+}
+
+.catTitle {
+  font-family: var(--font-syne);
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #ff3333; /* studio red accent */
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.item:hover {
+  background: rgba(255, 255, 255, 0.02);
+  padding-left: 1.5rem;
+}
+
+.itemMain {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.itemName {
+  font-family: var(--font-syne);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.itemDesc {
+  font-family: var(--font-inter);
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.itemPrice {
+  font-family: var(--font-syne);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.backHome {
+  margin-top: 10rem;
+}
+
+.backBtn {
+  font-family: var(--font-inter);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  color: #666;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.backBtn:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .header { margin-bottom: 4rem; }
+  .item { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .itemPrice { margin-left: 0; }
+}
