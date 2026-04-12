@@ -110,7 +110,7 @@
   content: '';
   width: 4px;
   height: 4px;
-  background: #ff3333; /* studio red accent */
+  background: #ffffff; /* pure white accent instead of red */
   display: block;
 }
 
@@ -142,21 +142,61 @@
 }
 
 .viewAllBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.25rem 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  background: transparent;
+  color: #fff;
   font-family: var(--font-inter);
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  color: #888;
   text-decoration: none;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #333;
-  transition: all 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  position: relative;
+}
+
+.viewAllBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+}
+
+.viewAllBtn span {
+  position: relative;
+  z-index: 1;
+}
+
+.btnArrow {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .viewAllBtn:hover {
-  color: #fff;
+  color: #000;
   border-color: #fff;
-  padding-left: 1rem;
+}
+
+.viewAllBtn:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.viewAllBtn:hover .btnArrow {
+  transform: translateX(5px);
 }
 
 @media (max-width: 768px) {
