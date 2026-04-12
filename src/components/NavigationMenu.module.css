@@ -5,7 +5,10 @@
   z-index: 90;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 6rem 0; /* Add padding to prevent colliding with the top menu/logo */
 }
 
 .container {
@@ -14,14 +17,17 @@
   margin: 0 auto;
   padding: 0 clamp(2rem, 5vw, 4rem);
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
 }
 
 .linksContainer {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: clamp(0.5rem, 3vh, 2rem); /* Dynamic gap based on height */
+  text-align: center;
+  padding: 2rem 0;
 }
 
 /* 
@@ -33,119 +39,40 @@
 }
 .linksContainer .navLink:hover {
   opacity: 1;
-  padding-left: 2rem;
+  transform: scale(1.05);
 }
 
 .linkItem {
-  overflow: hidden;
+  overflow: visible;
 }
 
 .navLink {
-  display: flex;
-  align-items: baseline;
+  display: inline-block;
   text-decoration: none;
   transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-}
-
-.linkNum {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--muted);
-  margin-right: 2rem;
-  font-weight: 400;
+  padding: 0.5rem 1rem; /* Prevent edge clipping during scale animations */
 }
 
 .linkLabel {
+  display: block; /* Ensure the text block expands fully */
   font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 6rem);
+  font-size: clamp(3rem, min(8vw, 18vh), 8rem); /* Scale dynamically down if screen height is small */
   font-weight: 500;
   color: var(--foreground);
   text-transform: uppercase;
   letter-spacing: -0.02em;
-}
-
-/* Secondary Meta Columns */
-.metaContainer {
-  display: flex;
-  gap: 4rem;
-  padding-bottom: 1rem;
-}
-
-.metaColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.metaTitle {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  margin-bottom: 0.5rem;
-}
-
-.metaList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.metaLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-size: 1rem;
-  color: var(--foreground);
-  transition: color 0.3s ease;
-  text-decoration: none;
-}
-
-.metaLink:hover {
-  color: var(--muted);
-}
-
-.contactEmail {
-  font-size: 1.5rem;
-  font-family: var(--font-display);
-  color: var(--foreground);
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.contactEmail:hover {
-  opacity: 0.7;
-}
-
-.location {
-  font-size: 1rem;
-  color: var(--muted);
+  line-height: 1.1; /* Fix vertical clipping on large fonts */
 }
 
 /* MOBILE */
 @media (max-width: 1024px) {
-  .container {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 4rem;
-  }
-  .metaContainer {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 2rem;
+  .linkLabel {
+    font-size: clamp(3rem, 12vw, 5rem);
   }
 }
 
 @media (max-width: 640px) {
   .linkLabel {
-    font-size: 3rem;
-  }
-  .linkNum {
-    margin-right: 1rem;
+    font-size: 3.5rem;
   }
 }
