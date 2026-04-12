@@ -21,7 +21,7 @@ export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps)
   const overlayVariants = {
     closed: { y: "-100%", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
     open: { y: "0%", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }
-  };
+  } as const;
 
   const containerVariants = {
     closed: { opacity: 0 },
@@ -29,12 +29,12 @@ export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps)
       opacity: 1,
       transition: { staggerChildren: 0.1, delayChildren: 0.3 }
     }
-  };
+  } as const;
 
   const itemVariants = {
     closed: { y: 50, opacity: 0 },
     open: { y: 0, opacity: 1, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }
-  };
+  } as const;
 
   return (
     <AnimatePresence>
