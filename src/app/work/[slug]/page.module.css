@@ -1,279 +1,178 @@
 .main {
-  background-color: #050505;
+  background-color: #000000;
   color: #ffffff;
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
-  /* Ultra-fine Technical Grid Background */
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  background-attachment: fixed;
+  /* Deep Obsidian Backdrop: A single, very large soft glow to create depth */
+  background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
+              radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.02) 0%, transparent 40%);
 }
 
-/* Scroll Progress Line (Top Ref) */
-.progressContainer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  z-index: 2000;
-  display: flex;
-  gap: 4px;
-  padding: 0 4px;
-}
-
-.progressBar {
-  flex: 1;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  position: relative;
-}
-
-.progressFill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: #ffffff;
-  width: 0%;
-}
-
-/* Navigation Capsule (Pill Ref) */
-.navCapsule {
-  position: fixed;
-  top: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 100px;
-  gap: 1.5rem;
-  z-index: 1000;
-}
-
-.navItem {
-  color: #ffffff;
-  text-decoration: none;
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-}
-
-.navItemActive {
-  opacity: 1;
-  background: #ffffff;
-  color: #000000;
-  padding: 0.4rem 1rem;
-  border-radius: 100px;
-}
-
-/* Floating Corner Icons (Back, Social, Sound Ref) */
-.iconBtn {
-  position: fixed;
-  top: 1.5rem;
-  width: 2.8rem;
-  height: 2.8rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  text-decoration: none;
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
-
-.iconBtn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: scale(1.1);
-}
-
-.iconLeft { left: 1.5rem; }
-.iconRight { right: 1.5rem; }
-.iconRight2 { right: 5rem; }
-
-/* Article Layout */
-.article {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: clamp(10rem, 20vh, 15rem) 2rem 10rem;
+/* Luxury Editorial Layout */
+.section {
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  padding: 10rem var(--container-padding);
 }
 
-/* Glassmorphism Header */
-.glassHeader {
-  width: 100%;
-  max-width: 700px;
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(30px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 32px;
-  padding: 4rem 3rem;
-  text-align: center;
-  margin-bottom: 6rem;
+/* Header: The User-Approved Vertical Stack */
+.header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .category {
-  font-family: var(--font-body);
+  font-family: var(--font-inter);
   font-size: 0.75rem;
+  letter-spacing: 0.2rem;
   text-transform: uppercase;
-  letter-spacing: 0.3rem;
-  color: var(--muted);
-  margin-bottom: 1.5rem;
-}
-
-.title {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  line-height: 1;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  color: #888;
   margin-bottom: 2rem;
 }
 
-/* Project Meta Stack */
+.title {
+  font-family: var(--font-syne);
+  font-size: clamp(4rem, 12vw, 10rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.04em;
+}
+
+.client {
+  font-family: var(--font-inter);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #666;
+  margin-top: 1rem;
+}
+
 .metaStack {
+  margin-top: 5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 3rem;
-  opacity: 0.8;
+  gap: 1.5rem;
 }
 
-.metaItem {
-  font-family: var(--font-body);
+.metaLine {
+  font-family: var(--font-inter);
   font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  color: #888;
+  letter-spacing: 0.1em;
+  color: #444;
 }
 
-.visitLive {
-  display: inline-flex;
-  padding: 1.2rem 3rem;
-  background: #ffffff;
-  color: #000000;
-  border-radius: 100px;
-  text-decoration: none;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
+/* Problem & Solution as Typographic Art */
+.storySection {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-inter);
+  font-size: 0.6rem;
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  font-weight: 600;
-  transition: all 0.4s ease;
-}
-
-.visitLive:hover {
-  transform: scale(1.05) translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* Narrative Glass Sections */
-.glassSection {
-  width: 100%;
-  max-width: 700px;
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
-  padding: 3rem;
+  letter-spacing: 0.4rem;
+  color: #ff3333;
   margin-bottom: 4rem;
-  text-align: left;
 }
 
-.sectionTitle {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  color: #ffffff;
-  margin-bottom: 1.5rem;
-  opacity: 0.6;
+.statement {
+  font-family: var(--font-playfair); /* Luxury Serif */
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  line-height: 1.1;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+  max-width: 15ch;
+  /* Subtle glass card backdrop for the text block itself */
+  padding: 4rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
 }
 
-.sectionText {
+.description {
+  margin-top: 4rem;
+  font-family: var(--font-inter);
   font-size: 1.25rem;
-  line-height: 1.7;
-  color: #ffffff;
+  line-height: 1.6;
+  color: #888;
+  max-width: 600px;
   font-weight: 300;
 }
 
-/* Footer: Next Story Card - Precise Ref Replication */
-.footer {
-  width: 100%;
-  max-width: 700px;
-  margin-top: 4rem;
-}
-
-.nextStoryCard {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(40px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 1.2rem;
+/* Monolith "Visit" Button */
+.ctaSection {
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  text-decoration: none;
-  transition: all 0.4s ease;
+  justify-content: center;
 }
 
-.nextStoryCard:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-5px);
-}
-
-.nextThumb {
-  width: 70px;
-  height: 70px;
-  border-radius: 12px;
-  overflow: hidden;
+.visitBtn {
   position: relative;
-  flex-shrink: 0;
-  background: #111;
-}
-
-.nextInfo {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 12rem;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(40px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
 }
 
-.nextLabel {
-  font-size: 0.6rem;
+.visitBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.8s ease;
+}
+
+.visitBtn:hover::before {
+  transform: translateX(100%);
+}
+
+.visitBtn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.02);
+}
+
+.btnText {
+  font-family: var(--font-syne);
+  font-size: 1.5rem;
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  color: #666;
-  font-weight: 600;
+  letter-spacing: 1rem;
+  color: #fff;
+  z-index: 1;
 }
 
-.nextTitle {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  color: #ffffff;
-  letter-spacing: -0.02em;
+.btnSub {
+  font-family: var(--font-inter);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  color: #666;
+  margin-top: 2rem;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {
-  .navCapsule {
-    top: auto;
-    bottom: 2rem;
-  }
+  .section { padding: 6rem 1.5rem; }
+  .statement { font-size: 2.5rem; padding: 2rem; }
+  .visitBtn { padding: 4rem 2rem; width: 100%; }
 }
