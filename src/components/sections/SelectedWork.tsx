@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import styles from "./SelectedWork.module.css";
 import { PROJECTS } from "@/data/projects";
 
@@ -42,6 +43,19 @@ export default function SelectedWork() {
           </Link>
         ))}
       </div>
+
+      <motion.div 
+        className={styles.viewAllContainer}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <Link href="/work" className={styles.viewAllBtn}>
+          <span>View All Projects</span>
+          <ArrowRight className={styles.btnIcon} size={20} />
+        </Link>
+      </motion.div>
     </section>
   );
 }
