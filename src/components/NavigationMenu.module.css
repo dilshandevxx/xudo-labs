@@ -1,139 +1,151 @@
 .overlay {
   position: fixed;
-<<<<<<< main
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-=======
   inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
->>>>>>> local
   background-color: var(--background);
   z-index: 90;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
 }
 
-.contentContainer {
-  display: flex;
-  flex: 1;
+.container {
   width: 100%;
-  height: 100%;
-  padding-top: 6rem;
-  padding-bottom: 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(2rem, 5vw, 4rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-.navLinksContainer {
-  flex: 1;
+.linksContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-left: clamp(2rem, 8vw, 8rem);
   gap: 1.5rem;
-  z-index: 2;
 }
 
-.imagePreviewContainer {
-  flex: 1;
-  position: relative;
+/* 
+ Dim out all links when the container is hovered, 
+ then brighten the specific hovered link.
+*/
+.linksContainer:hover .navLink {
+  opacity: 0.3;
+}
+.linksContainer .navLink:hover {
+  opacity: 1;
+  padding-left: 2rem;
+}
+
+.linkItem {
   overflow: hidden;
-  display: none; 
-}
-
-@media (min-width: 1024px) {
-  .imagePreviewContainer {
-    display: block;
-  }
-}
-
-.previewImageWrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.previewImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(100%);
-  transition: filter 0.5s ease, transform 0.5s ease;
-}
-
-.previewImage:hover {
-  filter: grayscale(0%);
-  transform: scale(1.05);
-}
-
-.navItemWrapper {
-  overflow: hidden;
-  width: fit-content;
-  position: relative;
 }
 
 .navLink {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 8rem);
-  text-transform: uppercase;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--foreground);
+  display: flex;
+  align-items: baseline;
   text-decoration: none;
-  line-height: 0.9;
-  transition: all 0.4s ease;
-  position: relative;
-  display: inline-block;
-  white-space: nowrap;
+  transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-.navLink::before {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  top: 0;
+.linkNum {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--muted);
+  margin-right: 2rem;
+  font-weight: 400;
+}
+
+.linkLabel {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 500;
   color: var(--foreground);
-  width: 0%;
-  overflow: hidden;
-  transition: width 0.4s ease;
-  -webkit-text-stroke: 0px transparent;
-  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
-.navItemWrapper:hover .navLink {
-  transform: translateX(30px);
+/* Secondary Meta Columns */
+.metaContainer {
+  display: flex;
+  gap: 4rem;
+  padding-bottom: 1rem;
 }
 
-.navItemWrapper:hover .navLink::before {
-  width: 100%;
+.metaColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-/* MOBILE OVERRIDES */
-@media (max-width: 1023px) {
-  .navLink { 
-    font-size: clamp(3rem, 12vw, 5rem); 
-    line-height: 1; 
-    color: var(--foreground);
-    -webkit-text-stroke: 0px transparent;
-  }
-  
-  .navLink::before {
-    display: none;
-  }
-  
-  .navItemWrapper:hover .navLink {
-    transform: translateX(10px);
-    color: var(--muted);
-    font-style: italic;
-  }
-  
-  .navLinksContainer {
+.metaTitle {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.metaList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.metaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 1rem;
+  color: var(--foreground);
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.metaLink:hover {
+  color: var(--muted);
+}
+
+.contactEmail {
+  font-size: 1.5rem;
+  font-family: var(--font-display);
+  color: var(--foreground);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.contactEmail:hover {
+  opacity: 0.7;
+}
+
+.location {
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+/* MOBILE */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
+    gap: 4rem;
+  }
+  .metaContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .linkLabel {
+    font-size: 3rem;
+  }
+  .linkNum {
+    margin-right: 1rem;
   }
 }

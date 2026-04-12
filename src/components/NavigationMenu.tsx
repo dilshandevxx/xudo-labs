@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import styles from "./NavigationMenu.module.css";
 
 interface NavigationMenuProps {
@@ -12,117 +11,91 @@ interface NavigationMenuProps {
 }
 
 const NAV_LINKS = [
-  { href: "/", label: "Home", image: "/images/hero.png" },
-  { href: "/services", label: "About", image: "/images/about.png" },
-  { href: "/#services", label: "Work", image: "/images/portfolio1.png" },
-  { href: "#", label: "Contact", image: "/images/science_tech.png" },
+  { href: "/", label: "Home", num: "01" },
+  { href: "/services", label: "Services", num: "02" },
+  { href: "/#work", label: "Work", num: "03" },
+  { href: "/blog", label: "Insights", num: "04" },
+];
+
+const SOCIAL_LINKS = [
+  { href: "#", label: "Twitter" },
+  { href: "#", label: "Instagram" },
+  { href: "#", label: "LinkedIn" },
+  { href: "#", label: "Dribbble" },
 ];
 
 export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps) {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const overlayVariants = {
-    closed: { y: "-100%", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const } },
-    open: { y: 0, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const } }
+    closed: { y: "-100%", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
+    open: { y: "0%", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }
   };
 
-  const linkContainerVariants = {
+  const containerVariants = {
     closed: { opacity: 0 },
     open: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.4 }
+      transition: { staggerChildren: 0.1, delayChildren: 0.3 }
     }
   };
 
-  const linkItemVariants = {
-    closed: { y: 150, opacity: 0 },
-    open: { y: 0, opacity: 1, transition: { duration: 1, ease: [0.76, 0, 0.24, 1] as const } }
-  };
-
-  const imageVariants = {
-    initial: { scale: 1.1, opacity: 0 },
-    active: { scale: 1, opacity: 1, transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1] as const } },
-    exit: { scale: 1.1, opacity: 0, transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1] as const } }
+  const itemVariants = {
+    closed: { y: 50, opacity: 0 },
+    open: { y: 0, opacity: 1, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }
   };
 
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className={styles.overlay}
-          variants={overlayVariants}
-          initial="closed"
-          animate="open"
-          exit="closed"
+           className={styles.overlay}
+           variants={overlayVariants}
+           initial="closed"
+           animate="open"
+           exit="closed"
         >
-          <div className={styles.contentContainer}>
-            <motion.nav 
-              className={styles.navLinksContainer}
-              variants={linkContainerVariants}
-              initial="closed"
-              animate="open"
-              exit="closed"
+          <div className={styles.container}>
+            <motion.div 
+               className={styles.linksContainer}
+               variants={containerVariants}
+               initial="closed"
+               animate="open"
+               exit="closed"
             >
               {NAV_LINKS.map((link, index) => (
-                <div 
-                  key={index} 
-                  className={styles.navItemWrapper}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                >
-                  <motion.div variants={linkItemVariants}>
-                    <Link 
-                      href={link.href} 
-                      className={styles.navLink} 
-                      onClick={onClose}
-                      data-text={link.label}
-                    >
-                      {link.label}
-                    </Link>
-                  </motion.div>
-                </div>
+                <motion.div key={index} variants={itemVariants} className={styles.linkItem}>
+                  <Link href={link.href} className={styles.navLink} onClick={onClose}>
+                    <span className={styles.linkNum}>{link.num}</span>
+                    <span className={styles.linkLabel}>{link.label}</span>
+                  </Link>
+                </motion.div>
               ))}
-            </motion.nav>
+            </motion.div>
 
-            <div className={styles.imagePreviewContainer}>
-              <AnimatePresence mode="wait">
-                {hoveredIndex !== null ? (
-                  <motion.div
-                    key={hoveredIndex}
-                    variants={imageVariants}
-                    initial="initial"
-                    animate="active"
-                    exit="exit"
-                    className={styles.previewImageWrapper}
-                  >
-                    <Image
-                      src={NAV_LINKS[hoveredIndex].image}
-                      alt={NAV_LINKS[hoveredIndex].label}
-                      fill
-                      className={styles.previewImage}
-                      priority
-                    />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="default"
-                    variants={imageVariants}
-                    initial="initial"
-                    animate="active"
-                    exit="exit"
-                    className={styles.previewImageWrapper}
-                  >
-                    <Image
-                      src={NAV_LINKS[0].image}
-                      alt="Default Preview"
-                      fill
-                      className={styles.previewImage}
-                      priority
-                    />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            <motion.div 
+               className={styles.metaContainer}
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1, transition: { delay: 0.6, duration: 0.8 } }}
+            >
+               <div className={styles.metaColumn}>
+                 <span className={styles.metaTitle}>Socials</span>
+                 <ul className={styles.metaList}>
+                   {SOCIAL_LINKS.map((social, i) => (
+                     <li key={i}>
+                       <a href={social.href} className={styles.metaLink}>
+                         {social.label} <ArrowUpRight size={14} />
+                       </a>
+                     </li>
+                   ))}
+                 </ul>
+               </div>
+
+               <div className={styles.metaColumn}>
+                 <span className={styles.metaTitle}>Get in touch</span>
+                 <a href="mailto:hello@xudo.studio" className={styles.contactEmail}>hello@xudo.studio</a>
+                 <div className={styles.location}>Based in London, UK</div>
+               </div>
+            </motion.div>
           </div>
         </motion.div>
       )}
