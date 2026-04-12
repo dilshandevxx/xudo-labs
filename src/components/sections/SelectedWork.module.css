@@ -177,20 +177,23 @@
   align-items: center;
   gap: 1rem;
   padding: 1.5rem 3rem;
-  border-radius: 100px;
-  background-color: var(--foreground);
-  color: var(--background);
+  border: 1px solid var(--foreground);
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--foreground);
   font-family: var(--font-body);
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  font-weight: 500;
   text-decoration: none;
   text-transform: uppercase;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .viewAllBtn:hover {
-  transform: scale(1.05);
-  background-color: var(--muted);
+  background-color: var(--foreground);
+  color: var(--background);
+  transform: translateY(-5px); /* Elegant lift instead of scale */
 }
 
 .btnIcon {
@@ -198,12 +201,12 @@
 }
 
 .viewAllBtn:hover .btnIcon {
-  transform: translateX(5px);
+  transform: translateX(5px) rotate(-45deg); /* Classy arrow animation */
 }
 
 @media (max-width: 768px) {
   .viewAllBtn {
     padding: 1.2rem 2.5rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
