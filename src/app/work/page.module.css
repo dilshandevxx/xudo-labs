@@ -1,6 +1,6 @@
 .workPage {
   position: relative;
-  padding: clamp(8rem, 15vw, 12rem) var(--container-padding) 6rem;
+  padding: clamp(5rem, 10vw, 7rem) var(--container-padding) 6rem;
   background-color: var(--background);
   min-height: 100vh;
   color: var(--foreground);

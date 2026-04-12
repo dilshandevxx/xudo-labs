@@ -37,6 +37,7 @@ export default function SelectedWork() {
                     View<br />Project
                   </div>
                   <h3 className={styles.projectName}>{project.title}</h3>
+                  <span className={styles.projectCategory}>{project.category}</span>
                 </div>
               </div>
             </motion.div>
