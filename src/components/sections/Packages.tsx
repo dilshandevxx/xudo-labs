@@ -71,9 +71,7 @@ export default function Packages() {
             transition={{ ...fadeIn.transition, delay: index * 0.1 }}
             viewport={{ once: true }}
           >
-            {pkg.isBestSeller && (
-              <div className={styles.bestSellerTag}>Studio Recommended</div>
-            )}
+
             
             <header className={styles.cardHeader}>
               <h3 className={styles.packageName}>{pkg.name}</h3>

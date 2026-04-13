@@ -1,15 +1,17 @@
-.container {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 12rem var(--container-padding);
-  position: relative;
-  z-index: 2;
+.mainWrapper {
   background: #000;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 8rem var(--container-padding) 12rem;
 }
 
 /* Header Section */
 .header {
-  margin-bottom: 12rem;
+  margin-bottom: 4rem;
   max-width: 1000px;
 }
 
@@ -18,227 +20,296 @@
   font-size: 0.75rem;
   letter-spacing: 0.4rem;
   text-transform: uppercase;
-  color: #333;
+  color: #313131;
   margin-bottom: 3rem;
   display: block;
 }
 
 .title {
   font-family: var(--font-syne);
-  font-size: clamp(3.5rem, 12vw, 10rem);
+  font-size: clamp(2.5rem, 6vw, 5rem);
   text-transform: uppercase;
   font-weight: 700;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.02em;
   line-height: 0.85;
-  margin-bottom: 5rem;
+  margin-bottom: 1rem;
   color: #fff;
 }
 
 .description {
   font-family: var(--font-inter);
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   color: #555;
-  max-width: 700px;
+  max-width: 650px;
   line-height: 1.6;
 }
 
-/* HIGH-CONTRAST MONOCHROME GRID (5 CARDS) */
+/* Tab Bar */
+.tabBar {
+  display: flex;
+  gap: 3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 6rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+}
+
+.tabBar::-webkit-scrollbar {
+  display: none;
+}
+
+.tabButton {
+  background: none;
+  border: none;
+  color: #555;
+  font-family: var(--font-syne);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 2rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.tabButton:hover {
+  color: #fff;
+}
+
+.activeTab {
+  color: #fff;
+}
+
+.activeIndicator {
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ff0080;
+}
+
+/* PERFECT SYMMETRICAL GRID */
 .pricingGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  grid-auto-rows: 1fr;
+  gap: 2.5rem;
   width: 100%;
 }
 
 @media (min-width: 1024px) {
   .pricingGrid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
   }
 }
 
 .card {
-  background: #0a0a0a;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 5rem 4rem;
+  background: linear-gradient(135deg, #0d0d0d 0%, #060606 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3rem 2.5rem;
   border-radius: 4px;
-  display: grid;
-  grid-template-rows: auto auto auto 1fr auto; /* RIGID SYNC */
-  gap: 4.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.9);
+  overflow: hidden;
 }
 
 .card:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-15px);
-  background: #111;
-}
-
-/* Recommended Pulse Dot */
-.bestSellerTag {
-  position: absolute;
-  top: 2rem;
-  right: 2.5rem;
-  font-family: var(--font-inter);
-  font-size: 0.7rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #ff0080; /* BEAUTIFUL PINK */
-  letter-spacing: 0.2rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.bestSellerTag::before {
-  content: '';
-  width: 8px;
-  height: 8px;
-  background: #ff0080;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(255, 0, 128, 0.5);
+  border-color: rgba(255, 0, 128, 0.4);
+  transform: translateY(-8px);
+  box-shadow: 0 40px 100px -20px rgba(255, 0, 128, 0.15);
 }
 
 .cardHeader {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding-bottom: 3.5rem;
+  margin-bottom: 2rem;
 }
 
 .cardTitle {
   font-family: var(--font-syne);
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: 2.5rem;
   text-transform: uppercase;
   font-weight: 700;
-  margin: 0;
-  line-height: 0.85;
+  margin-bottom: 0.75rem;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: #fff;
 }
 
 .price {
   font-family: var(--font-inter);
-  font-size: 1.6rem;
-  color: #fff;
-  font-weight: 400;
-  opacity: 0.8;
+  font-size: 1rem;
+  color: #ff0080; /* SIGNATURE PINK */
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
 }
 
 .cardDesc {
   font-family: var(--font-inter);
-  font-size: 1.1rem;
-  color: #555;
-  line-height: 1.7;
-  margin: 0;
+  font-size: 1.05rem;
+  color: #ccc; /* HIGH CONTRAST */
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  font-weight: 400;
 }
 
-/* RESTORED PINK FEATURE LIST */
+/* BUG FIX: INLINE FEATURE LAYOUT */
 .featureList {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 3rem 0;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1.25rem;
+  flex-grow: 1;
 }
 
 .featureItem {
-  display: flex;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
   align-items: flex-start;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  font-family: var(--font-inter);
+  font-size: 0.9rem;
+  color: #888;
+  line-height: 1.4;
 }
 
-.checkIcon {
-  color: #ff0080; /* BEAUTIFUL PINK */
+.plusIcon {
+  color: #ff0080;
   font-weight: 900;
-  font-size: 1.25rem;
-  line-height: 1;
-  margin-top: -2px;
-}
-
-.specData {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-.specLabel {
-  font-family: var(--font-inter);
-  font-size: 0.75rem;
-  color: #333;
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-}
-
-.specValue {
-  font-family: var(--font-inter);
   font-size: 1rem;
-  color: #fff;
-  font-weight: 500;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
+  flex-shrink: 0; /* PREVENT ICON FROM SQUISHING */
 }
 
-.card:hover .specValue {
-  opacity: 1;
+.featureText {
+  flex: 1;
 }
 
-/* MONOLITHIC CTA */
+/* MONOLITHIC BUTTON */
 .inquireBtn {
   width: 100%;
-  padding: 2rem;
+  padding: 1.5rem;
   background: #fff;
   border: none;
   color: #000;
   font-family: var(--font-inter);
-  font-size: 1.05rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.25rem;
+  letter-spacing: 0.2rem;
   text-decoration: none;
   text-align: center;
   font-weight: 900;
   border-radius: 0;
-  transition: all 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: auto;
 }
 
 .inquireBtn:hover {
-  background: #ff0080; /* PINK FOCUS */
+  background: #ff0080;
   color: #fff;
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(255, 0, 128, 0.3);
 }
 
-/* Outro Section */
+/* REDESIGNED OUTRO: THE EDITORIAL SIGNATURE */
 .outro {
   margin-top: 15rem;
-  padding: 12rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: left;
+  padding: 10rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  text-align: center;
+}
+
+.statusBox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.statusDot {
+  width: 10px;
+  height: 10px;
+  background: #ff0080;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(255, 0, 128, 0.6);
+  animation: pulse 2s infinite;
+}
+
+.statusText {
+  font-family: var(--font-inter);
+  font-size: 0.75rem;
+  letter-spacing: 0.3rem;
+  color: #555;
+  text-transform: uppercase;
 }
 
 .outroTitle {
   font-family: var(--font-syne);
-  font-size: clamp(3.5rem, 12vw, 10rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   text-transform: uppercase;
-  margin-bottom: 5rem;
-  line-height: 0.85;
-}
-
-.contactLink {
-  font-family: var(--font-syne);
-  font-size: clamp(2.5rem, 10vw, 13rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: #fff;
-  text-decoration: underline;
-  text-underline-offset: 15px;
-  transition: opacity 0.4s ease;
-  word-break: break-all;
 }
 
-.contactLink:hover {
+.contactWrapper {
+  margin-top: 4rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.contactButton {
+  display: block;
+  width: 100%;
+  padding: 2.5rem;
+  background: #fff;
+  color: #000;
+  font-family: var(--font-syne);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid #fff;
+}
+
+.contactButton:hover {
+  background: transparent;
   color: #ff0080;
-  opacity: 0.8;
+  border-color: #ff0080;
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(255, 0, 128, 0.1);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.4; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .outro { padding: 8rem 0; }
+  .outroTitle { font-size: 2.5rem; }
+  .contactButton { padding: 2rem; }
 }
 
 @media (max-width: 1024px) {
-  .card { padding: 4rem 2.5rem; }
+  .pricingGrid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
 }
