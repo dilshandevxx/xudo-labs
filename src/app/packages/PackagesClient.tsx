@@ -89,15 +89,24 @@ export default function PackagesClient() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            Studio Archive // Full Service Catalog
+            Technical Models // v4
           </motion.span>
-          <h1 className={styles.title}>
-            The Production <br /> Hierarchy.
-          </h1>
-          <p className={styles.description}>
-            From foundational digital presence to enterprise-scale technology ecosystems, 
-            XŪDŪ structures every tier with mathematical precision and visual excellence.
-          </p>
+          <motion.h1 
+            className={styles.title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            The Production <br /> Catalog
+          </motion.h1>
+          <motion.p 
+            className={styles.description}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            Explore our full suite of technical deployment models and digital engineering infrastructure designed for high-stakes brands.
+          </motion.p>
         </header>
 
         <section className={styles.pricingGrid}>

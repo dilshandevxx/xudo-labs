@@ -48,7 +48,7 @@ export default function Packages() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Production Tiers
+          technical_offerings // 24
         </motion.span>
         <motion.h2 
           className={styles.title}
@@ -57,7 +57,7 @@ export default function Packages() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          Project <br /> Packages
+          Production <br /> Tiers
         </motion.h2>
       </div>
 
