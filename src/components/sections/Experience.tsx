@@ -229,11 +229,31 @@ export default function Experience() {
           })}
         </div>
 
-        <div className={styles.footerAction}>
-          <div className={styles.footerActionSpacer}></div>
-          <Link href="#contact" className={styles.getStartedBtn}>
-            Get started
-          </Link>
+        {/* EDITORIAL CTA BAND */}
+        <div className={styles.ctaBand}>
+          <div className={styles.ctaMetrics}>
+            <div className={styles.metric}>
+              <span className={styles.metricValue}>50+</span>
+              <span className={styles.metricLabel}>Projects Delivered</span>
+            </div>
+            <div className={styles.metric}>
+              <span className={styles.metricValue}>7</span>
+              <span className={styles.metricLabel}>Service Domains</span>
+            </div>
+            <div className={styles.metric}>
+              <span className={styles.metricValue}>100%</span>
+              <span className={styles.metricLabel}>Client Retention</span>
+            </div>
+          </div>
+          <div className={styles.ctaRight}>
+            <p className={styles.ctaStatement}>Ready to deploy your next <em>engineering vision?</em></p>
+            <Link href="#contact" className={styles.getStartedBtn}>
+              <span>Get Started</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
 
