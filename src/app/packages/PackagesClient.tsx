@@ -108,17 +108,19 @@ export default function PackagesClient() {
               {...fadeIn}
               transition={{ ...fadeIn.transition, delay: index * 0.1 }}
             >
-              {/* ARCHITECTURAL CORNERS */}
-              <div className={`${styles.corner} ${styles.tl}`} />
-              <div className={`${styles.corner} ${styles.tr}`} />
-              <div className={`${styles.corner} ${styles.bl}`} />
-              <div className={`${styles.corner} ${styles.br}`} />
+              <div className={styles.cardMeta}>
+                <span className={styles.microTag}>[ ARCH-SYS // {cat.id} ]</span>
+                <span className={styles.microTag}>EST. 2024</span>
+              </div>
 
-              {cat.isBestSeller && <div className={styles.bestSellerTag}>BEST SELLER</div>}
+              {cat.isBestSeller && <div className={styles.bestSellerTag}>Studio Recommendation</div>}
               
-              <span className={styles.cardId}>ARCHIVE_{cat.id}</span>
-              <h2 className={styles.cardTitle}>{cat.category}</h2>
-              <div className={styles.price}>{cat.price}</div>
+              <header className={styles.cardHeader}>
+                <span className={styles.cardId}>{cat.id}</span>
+                <h2 className={styles.cardTitle}>{cat.category}</h2>
+                <div className={styles.price}>{cat.price}</div>
+              </header>
+
               <p className={styles.cardDesc}>{cat.description}</p>
 
               <div className={styles.specsList}>
@@ -133,10 +135,9 @@ export default function PackagesClient() {
               <motion.a 
                 href="mailto:hello@xudo.studio"
                 className={styles.inquireBtn}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ y: -5 }}
               >
-                Initiate Package
+                Initiate Project
               </motion.a>
             </motion.div>
           ))}

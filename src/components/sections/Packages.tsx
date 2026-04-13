@@ -71,35 +71,39 @@ export default function Packages() {
             transition={{ ...fadeIn.transition, delay: index * 0.1 }}
             viewport={{ once: true }}
           >
-            {/* ARCHITECTURAL CORNERS */}
-            <div className={`${styles.corner} ${styles.tl}`} />
-            <div className={`${styles.corner} ${styles.tr}`} />
-            <div className={`${styles.corner} ${styles.bl}`} />
-            <div className={`${styles.corner} ${styles.br}`} />
+            <div className={styles.cardDecorativeLabels}>
+              <span className={styles.microLabel}>[ X-SEC // {pkg.id} ]</span>
+              <span className={styles.microLabel}>v2.4</span>
+            </div>
 
             {pkg.isBestSeller && (
-              <div className={styles.bestSellerTag}>BEST SELLER</div>
+              <div className={styles.bestSellerTag}>Studio Favorite</div>
             )}
             
-            <span className={styles.packageNumber}>[ ARCHIVE_{pkg.id} ]</span>
-            <h3 className={styles.packageName}>{pkg.name}</h3>
-            
-            <Link href="/packages" className={styles.breakdownLink}>
-              View Full Breakdown —
-            </Link>
+            <header className={styles.cardHeader}>
+              <span className={styles.packageLabel}>Tier {pkg.id}</span>
+              <h3 className={styles.packageName}>{pkg.name}</h3>
+              <div className={styles.priceValue}>{pkg.price}</div>
+            </header>
 
             <p className={styles.packageDescription}>{pkg.description}</p>
             
             <ul className={styles.featureList}>
               {pkg.features.map((feature, i) => (
-                <li key={i} className={styles.featureItem}>{feature}</li>
+                <li key={i} className={styles.featureItem}>
+                  <span className={styles.checkIcon}>+</span>
+                  {feature}
+                </li>
               ))}
             </ul>
 
-            <div className={styles.priceContainer}>
-              <span className={styles.priceLabel}>Development Cost</span>
-              <span className={styles.priceValue}>{pkg.price}</span>
-            </div>
+            <motion.a 
+              href="mailto:hello@xudo.studio"
+              className={styles.inquireBtn}
+              whileHover={{ x: 5 }}
+            >
+              Initiate Project
+            </motion.a>
           </motion.div>
         ))}
       </div>
