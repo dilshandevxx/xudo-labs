@@ -172,26 +172,42 @@
 }
 
 .viewAllContainer {
-  margin-top: 8rem;
+  margin-top: 10rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .viewAllBtn {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 2rem;
-  font-family: var(--font-syne);
-  font-size: 1.5rem;
+  padding: 1.8rem 4rem;
+  background: #fff;
+  color: #000;
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  font-weight: 800;
   text-transform: uppercase;
-  color: #fff;
   text-decoration: none;
-  letter-spacing: 0.1rem;
-  transition: opacity 0.3s ease;
+  letter-spacing: 0.2rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 0;
 }
 
 .viewAllBtn:hover {
-  opacity: 0.6;
+  background: #ff0080; /* BEAUTIFUL PINK HOVER */
+  color: #fff;
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -10px rgba(255, 0, 128, 0.3);
+}
+
+.btnArrow {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.viewAllBtn:hover .btnArrow {
+  transform: translateX(5px);
 }
 
 @media (max-width: 768px) {

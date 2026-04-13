@@ -104,7 +104,7 @@ export default function Packages() {
 
       <div className={styles.viewAllContainer}>
         <Link href="/packages" className={styles.viewAllBtn}>
-          <span>Expand Technical Catalog</span>
+          <span>View Full Package List</span>
           <div className={styles.btnArrow}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
