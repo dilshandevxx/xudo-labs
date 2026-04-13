@@ -6,29 +6,39 @@ import styles from "./Packages.module.css";
 
 const PACKAGES = [
   {
-    id: "01",
-    name: "Identity Systems",
-    description: "Foundational brand architecture for high-stakes enterprise ventures.",
-    features: ["Visual Identity", "Brand Strategy", "Typography Systems", "Logo Architecture"],
-    price: "From $8k"
-  },
-  {
     id: "02",
-    name: "Digital Core",
-    description: "High-performance digital platforms engineered for future scale.",
-    features: ["Next.js Platforms", "Interactive WebGL", "Headless CMS", "Technical SEO"],
-    price: "From $15k"
+    name: "Starter",
+    description: "Smart single-page architectural engines with core performance optimization.",
+    features: ["Custom Landing Page", "Domain Integration", "SEO & Analytics", "Responsive Grid"],
+    price: "From $15k",
+    isBestSeller: true
   },
   {
     id: "03",
-    name: "Intelligent Suite",
-    description: "Custom AI systems and predictive interfaces for the next era of tech.",
-    features: ["Custom LLM Training", "Predictive UX", "Algorithmic Design", "Real-time AI Nodes"],
-    price: "From $25k"
+    name: "Growth",
+    description: "Multi-page digital ecosystems designed for market dominance and lead gen.",
+    features: ["Multi-Page Site", "Advanced Local SEO", "Social Integration", "Content CMS"],
+    price: "From $28k",
+    isBestSeller: false
+  },
+  {
+    id: "04",
+    name: "Premium",
+    description: "Business-grade infrastructure for high-stakes enterprise organizations.",
+    features: ["Pro Multi-Page Site", "Business Email Setup", "Advanced SEO Suite", "SLA Support"],
+    price: "From $45k",
+    isBestSeller: false
   }
 ];
 
 export default function Packages() {
+  const fadeIn = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }
+  } as const;
+
   return (
     <section className={styles.packagesSection}>
       <div className={styles.header}>
@@ -38,7 +48,7 @@ export default function Packages() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Studio Offerings
+          Production Tiers
         </motion.span>
         <motion.h2 
           className={styles.title}
@@ -47,7 +57,7 @@ export default function Packages() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          Project Packages
+          Project <br /> Packages
         </motion.h2>
       </div>
 
@@ -58,11 +68,26 @@ export default function Packages() {
             className={styles.packageCard}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
+            transition={{ ...fadeIn.transition, delay: index * 0.1 }}
             viewport={{ once: true }}
           >
-            <span className={styles.packageNumber}>[ {pkg.id} ]</span>
+            {/* ARCHITECTURAL CORNERS */}
+            <div className={`${styles.corner} ${styles.tl}`} />
+            <div className={`${styles.corner} ${styles.tr}`} />
+            <div className={`${styles.corner} ${styles.bl}`} />
+            <div className={`${styles.corner} ${styles.br}`} />
+
+            {pkg.isBestSeller && (
+              <div className={styles.bestSellerTag}>BEST SELLER</div>
+            )}
+            
+            <span className={styles.packageNumber}>[ ARCHIVE_{pkg.id} ]</span>
             <h3 className={styles.packageName}>{pkg.name}</h3>
+            
+            <Link href="/packages" className={styles.breakdownLink}>
+              View Full Breakdown —
+            </Link>
+
             <p className={styles.packageDescription}>{pkg.description}</p>
             
             <ul className={styles.featureList}>
@@ -72,7 +97,7 @@ export default function Packages() {
             </ul>
 
             <div className={styles.priceContainer}>
-              <span className={styles.priceLabel}>Investment</span>
+              <span className={styles.priceLabel}>Development Cost</span>
               <span className={styles.priceValue}>{pkg.price}</span>
             </div>
           </motion.div>
@@ -81,7 +106,7 @@ export default function Packages() {
 
       <div className={styles.viewAllContainer}>
         <Link href="/packages" className={styles.viewAllBtn}>
-          <span>Full Project Catalogue</span>
+          <span>Expand Technical Catalog</span>
           <div className={styles.btnArrow}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

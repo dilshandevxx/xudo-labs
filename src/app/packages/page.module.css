@@ -45,7 +45,7 @@
 .pricingGrid {
   display: grid;
   grid-template-columns: 1fr;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (min-width: 1024px) {
@@ -55,22 +55,65 @@
 }
 
 .card {
-  padding: 4rem;
+  padding: 4.5rem 3.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: none;
   display: flex;
   flex-direction: column;
-  transition: background 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(5px);
+  min-height: 100%;
 }
 
 .card:hover {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(0, 255, 163, 0.3);
+}
+
+/* Blueprint Corners */
+.corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+.tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+.bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+.br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.card:hover .corner {
+  border-color: #00ffa3;
+  width: 18px;
+  height: 18px;
+}
+
+.bestSellerTag {
+  position: absolute;
+  top: 0;
+  right: 2.5rem;
+  background: #00ffa3;
+  color: #000;
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-inter);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  transform: translateY(-50%);
+  z-index: 10;
 }
 
 .cardId {
   font-family: var(--font-inter);
   font-size: 0.6rem;
-  color: #444;
-  margin-bottom: 3rem;
+  color: #333;
+  margin-bottom: 3.5rem;
   display: block;
 }
 
@@ -79,14 +122,16 @@
   font-size: 2.5rem;
   text-transform: uppercase;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 0.9;
 }
 
 .price {
   font-family: var(--font-syne);
   font-size: 1.5rem;
   color: #00ffa3;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
+  font-weight: 700;
 }
 
 .cardDesc {
@@ -95,7 +140,7 @@
   color: #777;
   line-height: 1.7;
   margin-bottom: 4rem;
-  min-height: 4.5rem;
+  min-height: 5rem;
 }
 
 /* Specs List (Blueprint style) */
@@ -116,10 +161,11 @@
 
 .specLabel {
   font-family: var(--font-inter);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
+  opacity: 0.8;
 }
 
 .specValue {
@@ -132,17 +178,17 @@
 .inquireBtn {
   width: 100%;
   padding: 1.5rem;
-  border: 1px solid #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background: transparent;
   color: #fff;
   font-family: var(--font-inter);
   font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.3rem;
   text-decoration: none;
   text-align: center;
   font-weight: 700;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .inquireBtn:hover {
@@ -150,7 +196,7 @@
   color: #000;
 }
 
-/* Inquiry Monolith (Keep but clean up) */
+/* Inquiry Monolith */
 .outro {
   margin-top: 15rem;
   padding: 10rem 0;
@@ -174,11 +220,7 @@
   transition: opacity 0.3s ease;
 }
 
-.contactLink:hover {
-  opacity: 0.7;
-}
-
 @media (max-width: 1024px) {
   .pricingGrid { border: none; }
-  .card { border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding: 5rem 2rem; }
+  .card { border-left: 1px solid rgba(255, 255, 255, 0.1); padding: 4rem 2.5rem; }
 }

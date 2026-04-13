@@ -9,38 +9,63 @@ import styles from "./page.module.css";
 const DETAILED_OFFERINGS = [
   {
     id: "01",
-    category: "Identity Systems",
-    price: "From $12,000",
-    description: "Engineering the visual foundation for enterprise stability and distinctiveness.",
+    category: "Basic",
+    price: "From $8,000",
+    description: "Foundational digital presence for emerging brands and solo ventures.",
     specs: [
-      { module: "Visual Architecture", deliverable: "Logo system & marks" },
-      { module: "Typographic DNA", deliverable: "Custom font mapping" },
-      { module: "Strategic Narrative", deliverable: "Market positioning" },
-      { module: "Brand Book", deliverable: "Technical guidelines" }
+      { module: "Single Page", deliverable: "Structural landing page" },
+      { module: "Subdomain", deliverable: "Free XUDE hosting sub" },
+      { module: "Map Setup", deliverable: "Basic location integration" },
+      { module: "Core SEO", deliverable: "Metadata & indexing v1.0" }
     ]
   },
   {
     id: "02",
-    category: "Digital Core",
-    price: "From $18,000",
-    description: "High-performance digital platforms engineered with architectural precision.",
+    category: "Starter",
+    price: "From $15,000",
+    description: "Smart single-page architectural engines with core performance optimization.",
     specs: [
-      { module: "High-End Website", deliverable: "Next.js 15+ engine" },
-      { module: "Platform UX/UI", deliverable: "Full product design" },
-      { module: "Headless CMS", deliverable: "Content architecture" },
-      { module: "Motion Logic", deliverable: "Custom WebGL" }
-    ]
+      { module: "Custom Landing", deliverable: "Awwwards-lvl typography" },
+      { module: "Custom Domain", deliverable: "Identity integration" },
+      { module: "Analytics", deliverable: "Full tracking events" },
+      { module: "Mobile Optimize", deliverable: "Responsive grid sync" }
+    ],
+    isBestSeller: true
   },
   {
     id: "03",
-    category: "Intelligent Suite",
-    price: "From $35,000",
-    description: "Integrating next-generation intelligence into modern workflows.",
+    category: "Growth",
+    price: "From $28,000",
+    description: "Multi-page digital ecosystems designed for market dominance and lead gen.",
     specs: [
-      { module: "Custom LLM Suite", deliverable: "Fine-tuned models" },
-      { module: "Predictive UI", deliverable: "Adaptive interfaces" },
-      { module: "AI Web Nodes", deliverable: "Generative components" },
-      { module: "Data Strategy", deliverable: "Vector database" }
+      { module: "Multi-Page", deliverable: "Core 5-page structure" },
+      { module: "Local SEO", deliverable: "Map & listing dominance" },
+      { module: "Social Sync", deliverable: "Facebook & WhatsApp logic" },
+      { module: "CMS Hub", deliverable: "Technical content management" }
+    ]
+  },
+  {
+    id: "04",
+    category: "Premium",
+    price: "From $45,000",
+    description: "Business-grade infrastructure for high-stakes enterprise organizations.",
+    specs: [
+      { module: "Pro Multi-Page", deliverable: "Scalably engineered site" },
+      { module: "Business Email", deliverable: "Professional mail hosting" },
+      { module: "Advanced SEO", deliverable: "Quarterly keyword audits" },
+      { module: "Design System", deliverable: "Internal brand library" }
+    ]
+  },
+  {
+    id: "05",
+    category: "Ultra",
+    price: "From $75,000",
+    description: "Dynamic web applications and full-scale technological ecosystems.",
+    specs: [
+      { module: "Web Platform", deliverable: "Custom SaaS / Web App" },
+      { module: "Backups", deliverable: "Redundant cloud storage" },
+      { module: "Ads Ecosystem", deliverable: "Full conversion setup" },
+      { module: "24/7 Support", deliverable: "Architect hardware access" }
     ]
   }
 ] as const;
@@ -58,25 +83,23 @@ export default function PackagesClient() {
       <Header />
       
       <div className={styles.container}>
-        {/* CLEAN HEADER */}
         <header className={styles.header}>
           <motion.span 
             className={styles.label}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            Digital Studio // Service Tiers
+            Studio Archive // Full Service Catalog
           </motion.span>
           <h1 className={styles.title}>
-            Production <br /> Packages.
+            The Production <br /> Hierarchy.
           </h1>
           <p className={styles.description}>
-            Fixed-scope investment tiers for world-class branding, 
-            high-performance engineering, and industrial-grade AI systems.
+            From foundational digital presence to enterprise-scale technology ecosystems, 
+            XŪDŪ structures every tier with mathematical precision and visual excellence.
           </p>
         </header>
 
-        {/* STRUCTURAL PRICING GRID */}
         <section className={styles.pricingGrid}>
           {DETAILED_OFFERINGS.map((cat, index) => (
             <motion.div 
@@ -85,6 +108,14 @@ export default function PackagesClient() {
               {...fadeIn}
               transition={{ ...fadeIn.transition, delay: index * 0.1 }}
             >
+              {/* ARCHITECTURAL CORNERS */}
+              <div className={`${styles.corner} ${styles.tl}`} />
+              <div className={`${styles.corner} ${styles.tr}`} />
+              <div className={`${styles.corner} ${styles.bl}`} />
+              <div className={`${styles.corner} ${styles.br}`} />
+
+              {cat.isBestSeller && <div className={styles.bestSellerTag}>BEST SELLER</div>}
+              
               <span className={styles.cardId}>ARCHIVE_{cat.id}</span>
               <h2 className={styles.cardTitle}>{cat.category}</h2>
               <div className={styles.price}>{cat.price}</div>
@@ -105,17 +136,16 @@ export default function PackagesClient() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Inquire Production
+                Initiate Package
               </motion.a>
             </motion.div>
           ))}
         </section>
 
-        {/* OUTRO CALL */}
         <section className={styles.outro}>
-          <h2 className={styles.outroTitle}>Custom Architectures Required?</h2>
+          <h2 className={styles.outroTitle}>Proprietary Engineering?</h2>
           <a href="mailto:hello@xudo.studio" className={styles.contactLink}>
-            Let's Talk.
+            Custom Quote.
           </a>
           
           <Link href="/" className={styles.backHome}>
