@@ -176,18 +176,20 @@
 
 @media (min-width: 1024px) {
   .expandedInner {
-    grid-template-columns: 1fr 1.5fr;
-    /* Margin exactly maps to 80px + 140px in itemHeader grid */
-    margin-left: 220px; 
-    margin-right: 100px;
+    grid-template-columns: 140px 1.2fr 1fr;
+    gap: 4rem;
+    padding-bottom: 6rem;
+    margin-right: 2rem;
   }
 }
+
+
 
 .description {
   color: var(--muted);
   font-size: 1.125rem;
   line-height: 1.6;
-  max-width: 440px;
+  max-width: 500px;
   margin: 0;
 }
 
@@ -224,6 +226,49 @@
 .tag:hover {
   border-color: rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.05);
+}
+
+.capabilitiesColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.capabilitiesLabel {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #555;
+  letter-spacing: 0.3rem;
+  font-weight: 600;
+}
+
+.capabilitiesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.capabilityItem {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease;
+}
+
+.accordionItem:hover .capabilityItem {
+  color: #fff;
+}
+
+.capPlus {
+  color: #00ff80; /* CLINICAL GREEN */
+  font-weight: 900;
+  font-size: 1.1rem;
+  width: 15px;
 }
 
 .footerAction {

@@ -187,6 +187,12 @@
   font-weight: 900;
   font-size: 1rem;
   flex-shrink: 0; /* PREVENT ICON FROM SQUISHING */
+  transition: color 0.3s ease;
+}
+
+/* DYNAMIC PINK INTERACTION WHEN BUTTON IS HOVERED */
+.card:has(.inquireBtn:hover) .plusIcon {
+  color: #ff0080;
 }
 
 .featureText {
@@ -213,10 +219,10 @@
 }
 
 .inquireBtn:hover {
-  background: #00ff80;
+  background: #ff0080; /* BEAUTIFUL PINK */
   color: #fff;
   transform: scale(1.02);
-  box-shadow: 0 10px 30px rgba(0, 255, 128, 0.3);
+  box-shadow: 0 10px 30px rgba(255, 0, 128, 0.4);
 }
 
 /* REDESIGNED OUTRO: THE EDITORIAL SIGNATURE */

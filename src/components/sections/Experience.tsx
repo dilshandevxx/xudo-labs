@@ -170,18 +170,56 @@ export default function Experience() {
                       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     >
                       <div className={styles.expandedInner}>
-                        <div className={styles.expandedText}>
-                          <p className={styles.description}>{service.description}</p>
+                        
+                        {/* 1. IDENTITY COLUMN (WATERMARK) */}
+                        <div className={styles.identityColumn}>
+                          <span className={styles.indexLarge}>
+                            {String(index + 1).padStart(2, '0')}
+                          </span>
                         </div>
 
-                        <div className={styles.tagsContainer}>
-                          <div className={styles.tagsLabel}>Categories</div>
-                          <div className={styles.tagsList}>
+                        {/* 2. NARRATIVE BLOCK */}
+                        <div className={styles.narrativeBlock}>
+                          <div className={styles.editorialLabel}>Technical Brief</div>
+                          <p className={styles.description}>{service.description}</p>
+                          
+                          <div className={styles.expandedHeroWrapper}>
+                            <motion.div 
+                              className={styles.expandedHero}
+                              initial={{ clipPath: "inset(100% 0 0 0)" }}
+                              animate={{ clipPath: "inset(0% 0 0 0)" }}
+                              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                            >
+                              <Image 
+                                src={service.image} 
+                                alt={service.category} 
+                                fill 
+                                className={styles.heroImage}
+                              />
+                            </motion.div>
+                          </div>
+                        </div>
+
+                        {/* 3. TECHNICAL METADATA (DATA GRID) */}
+                        <div className={styles.technicalColumn}>
+                          <div className={styles.capabilitiesLabel}>Service Capabilities</div>
+                          <div className={styles.capabilitiesGrid}>
                             {service.items.map((item, i) => (
-                              <span key={i} className={styles.tag}>{item}</span>
+                              <motion.div 
+                                key={i} 
+                                className={styles.specRow}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 + (i * 0.05), duration: 0.6 }}
+                              >
+                                <span className={styles.specIndex}>{String(i + 1).padStart(2, '0')}</span>
+                                <span className={styles.specText}>{item}</span>
+                                <span className={styles.specStatus}>Live</span>
+                              </motion.div>
                             ))}
                           </div>
                         </div>
+
                       </div>
                     </motion.div>
                   )}

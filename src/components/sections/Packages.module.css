@@ -147,6 +147,12 @@
   color: #00ff80; /* TECHNICAL GREEN PRONOUNCED */
   font-size: 1.25rem;
   font-weight: 800;
+  transition: color 0.3s ease;
+}
+
+/* DYNAMIC PINK INTERACTION WHEN BUTTON IS HOVERED */
+.packageCard:has(.inquireBtn:hover) .checkIcon {
+  color: #ff0080;
 }
 
 /* FULL-WIDTH MONOLITHIC CTA */
@@ -167,7 +173,7 @@
 }
 
 .inquireBtn:hover {
-  background: #00ff80; /* HOVER GREEN */
+  background: #ff0080; /* HOVER PINK */
   color: #fff;
 }
 
