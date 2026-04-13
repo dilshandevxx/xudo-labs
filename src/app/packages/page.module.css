@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════
-   PACKAGES PAGE — ULTRA MINIMAL
+   PACKAGES PAGE — LUXURY MINIMAL
 ══════════════════════════════════════════════ */
 
 .mainWrapper {
@@ -61,24 +61,25 @@
   background: none;
   border: none;
   padding: 1.5rem 0;
-  color: #555;
+  color: rgba(255, 255, 255, 0.35);
   font-family: var(--font-body);
   font-size: 0.85rem;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
   position: relative;
-  transition: color 0.3s ease;
+  transition: color 0.4s ease;
   white-space: nowrap;
 }
 
 .tabButton:hover {
-  color: #aaa;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .activeTab {
   color: #fff;
+  font-weight: 500;
 }
 
 .activeTab:hover {
@@ -123,45 +124,72 @@
 .card {
   background: #000;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 3rem;
+  padding: 3.5rem;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.4s ease;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle glow at the top edge on hover */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0), transparent);
+  transition: background 0.6s ease;
+}
+
+.card:hover::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
 }
 
 .card:hover {
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  background: #030303;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
 }
 
 /* ── IDENTITY & PRICE ── */
 .cardHeader {
   margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .cardTitle {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   text-transform: uppercase;
   font-weight: 500;
-  letter-spacing: 0;
+  letter-spacing: 0.05em;
   color: #fff;
-  margin-bottom: 0.5rem;
+  margin: 0;
 }
 
 .priceValue {
   font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 400;
-  color: #888;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .cardDesc {
   font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: #bbb;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   flex-grow: 0;
+  font-weight: 300;
 }
 
 /* ── FEATURES ── */
@@ -169,18 +197,22 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  margin-bottom: 3rem;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
   flex-grow: 1;
   padding: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 2rem;
 }
 
 .featureItem {
   font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: #888;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 300;
+  transition: color 0.4s ease;
+}
+
+.card:hover .featureItem {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* ── ACTIONS ── */
@@ -193,20 +225,44 @@
 .inquireBtn {
   width: 100%;
   padding: 1.25rem;
-  background: #fff;
-  color: #000;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
   font-family: var(--font-body);
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.15rem;
   text-decoration: none;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
   font-weight: 500;
-  transition: opacity 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Subtle arrow icon next to text */
+.inquireBtn::after {
+  content: '→';
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  font-weight: 400;
+}
+
+.card:hover .inquireBtn {
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 .inquireBtn:hover {
-  opacity: 0.8;
+  background: #fff !important;
+  color: #000 !important;
+  border-color: #fff !important;
+}
+
+.inquireBtn:hover::after {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ══════════════════════════════════════════════
