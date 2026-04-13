@@ -12,17 +12,43 @@
 }
 
 .header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   margin-bottom: clamp(6rem, 12vw, 8rem);
 }
 
-.title {
+.subtitleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+.globalTitle {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 7vw, 5rem);
+  font-size: clamp(4rem, 8vw, 7rem);
   text-transform: uppercase;
   font-weight: 400;
   margin: 0;
-  letter-spacing: -0.02em;
   line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: #fff;
 }
 
 /* ── GRID ── */
@@ -56,32 +82,32 @@
   transform: translateY(-2px);
 }
 
-/* ── IDENTITY & PRICE (HORIZONTAL LAYOUT) ── */
+/* ── IDENTITY & PRICE ── */
 .cardHeader {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  flex-direction: column;
+  gap: 0.5rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   padding-bottom: 1.5rem;
 }
 
 .cardTitle {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
   text-transform: uppercase;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.35);
   margin: 0;
 }
 
 .priceValue {
   font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.05em;
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: -0.02em;
 }
 
 .cardDesc {
@@ -160,26 +186,29 @@
 /* ── VIEW ALL LINK ── */
 .viewAllContainer {
   margin-top: 6rem;
+  display: flex;
+  justify-content: center;
 }
 
 .viewAllBtn {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.4);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.15rem;
-  transition: color 0.4s ease;
   display: inline-flex;
   align-items: center;
-  gap: 1rem;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 1.25rem 4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  text-decoration: none;
+  transition: all 0.4s ease;
 }
 
 .viewAllBtn:hover {
-  color: #fff;
-  border-bottom-color: rgba(255, 255, 255, 0.4);
+  background: #fff;
+  color: #000;
 }
 
 @media (max-width: 768px) {

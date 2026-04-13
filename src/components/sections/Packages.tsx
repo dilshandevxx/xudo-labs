@@ -31,8 +31,12 @@ export default function Packages() {
   return (
     <section className={styles.packagesSection}>
       <div className={styles.header}>
-        <h2 className={styles.title}>
-          Packages
+        <div className={styles.subtitleWrapper}>
+          <span className={styles.dot} />
+          <span className={styles.subtitle}>Our offerings</span>
+        </div>
+        <h2 className={styles.globalTitle}>
+          Packages.
         </h2>
       </div>
 
