@@ -71,7 +71,7 @@
   font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: #ff0080; /* BEAUTIFUL PINK */
+  color: #00ff80; /* TECHNICAL GREEN */
   letter-spacing: 0.15rem;
   padding-left: 1.5rem;
 }
@@ -84,7 +84,7 @@
   transform: translateY(-50%);
   width: 8px;
   height: 8px;
-  background: #ff0080;
+  background: #00ff80;
   border-radius: 50%;
 }
 
@@ -144,7 +144,7 @@
 }
 
 .checkIcon {
-  color: #ff0080; /* BEAUTIFUL PINK PRONOUNCED */
+  color: #00ff80; /* TECHNICAL GREEN PRONOUNCED */
   font-size: 1.25rem;
   font-weight: 800;
 }
@@ -167,7 +167,7 @@
 }
 
 .inquireBtn:hover {
-  background: #ff0080; /* HOVER PINK */
+  background: #00ff80; /* HOVER GREEN */
   color: #fff;
 }
 
@@ -196,10 +196,10 @@
 }
 
 .viewAllBtn:hover {
-  background: #ff0080; /* BEAUTIFUL PINK HOVER */
+  background: #00ff80; /* TECHNICAL GREEN HOVER */
   color: #fff;
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px -10px rgba(255, 0, 128, 0.3);
+  box-shadow: 0 20px 40px -10px rgba(0, 255, 128, 0.3);
 }
 
 .btnArrow {

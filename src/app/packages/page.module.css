@@ -183,7 +183,7 @@
 }
 
 .plusIcon {
-  color: #ff0080;
+  color: #00ff80;
   font-weight: 900;
   font-size: 1rem;
   flex-shrink: 0; /* PREVENT ICON FROM SQUISHING */
@@ -213,7 +213,7 @@
 }
 
 .inquireBtn:hover {
-  background: #ff0080;
+  background: #00ff80;
   color: #fff;
   transform: scale(1.02);
   box-shadow: 0 10px 30px rgba(255, 0, 128, 0.3);
@@ -289,8 +289,8 @@
 
 .contactButton:hover {
   background: transparent;
-  color: #ff0080;
-  border-color: #ff0080;
+  color: #00ff80;
+  border-color: #00ff80;
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(255, 0, 128, 0.1);
 }
