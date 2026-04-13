@@ -189,23 +189,25 @@
   justify-content: center;
   gap: 2rem;
   padding: 1.8rem 4rem;
-  background: #fff;
-  color: #000;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   font-family: var(--font-inter);
-  font-size: 1rem;
-  font-weight: 800;
+  font-size: 0.85rem;
+  font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.2rem;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   border-radius: 0;
 }
 
 .viewAllBtn:hover {
-  background: #00ff80; /* TECHNICAL GREEN HOVER */
+  background: transparent;
   color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px -10px rgba(0, 255, 128, 0.3);
+  box-shadow: 0 20px 40px -10px rgba(255, 255, 255, 0.05);
 }
 
 .btnArrow {
