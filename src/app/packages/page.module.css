@@ -2,23 +2,24 @@
   max-width: 1600px;
   margin: 0 auto;
   padding: 12rem var(--container-padding);
+  position: relative;
+  z-index: 2;
   background: #000;
-  color: #fff;
 }
 
 /* Header Section */
 .header {
   margin-bottom: 12rem;
-  max-width: 950px;
+  max-width: 1000px;
 }
 
 .label {
   font-family: var(--font-inter);
   font-size: 0.75rem;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.4rem;
   text-transform: uppercase;
   color: #333;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
   display: block;
 }
 
@@ -29,18 +30,19 @@
   font-weight: 700;
   letter-spacing: -0.05em;
   line-height: 0.85;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
+  color: #fff;
 }
 
 .description {
   font-family: var(--font-inter);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   color: #555;
   max-width: 700px;
   line-height: 1.6;
 }
 
-/* HIGH-CONTRAST PINK ACCENT BENTO (Catalog) */
+/* HIGH-CONTRAST MONOCHROME GRID (5 CARDS) */
 .pricingGrid {
   display: grid;
   grid-template-columns: 1fr;
@@ -57,10 +59,10 @@
 .card {
   background: #0a0a0a;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 6rem 4.5rem;
+  padding: 5rem 4rem;
   border-radius: 4px;
   display: grid;
-  grid-template-rows: auto auto 1.5fr auto; /* SAME SIZE SYNC */
+  grid-template-rows: auto auto auto 1fr auto; /* RIGID SYNC */
   gap: 4.5rem;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
@@ -69,33 +71,33 @@
 
 .card:hover {
   border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-20px);
+  transform: translateY(-15px);
   background: #111;
 }
 
+/* Recommended Pulse Dot */
 .bestSellerTag {
   position: absolute;
-  top: 2.5rem;
-  right: 3rem;
+  top: 2rem;
+  right: 2.5rem;
   font-family: var(--font-inter);
   font-size: 0.7rem;
   font-weight: 800;
   text-transform: uppercase;
   color: #ff0080; /* BEAUTIFUL PINK */
   letter-spacing: 0.2rem;
-  padding-left: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .bestSellerTag::before {
   content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background: #ff0080;
   border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 0, 128, 0.5);
 }
 
 .cardHeader {
@@ -123,8 +125,16 @@
   opacity: 0.8;
 }
 
-/* Specs (High-Contrast List) */
-.specsList {
+.cardDesc {
+  font-family: var(--font-inter);
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* RESTORED PINK FEATURE LIST */
+.featureList {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -133,35 +143,46 @@
   gap: 3rem;
 }
 
-.specItem {
+.featureItem {
   display: flex;
   align-items: flex-start;
   gap: 1.5rem;
 }
 
+.checkIcon {
+  color: #ff0080; /* BEAUTIFUL PINK */
+  font-weight: 900;
+  font-size: 1.25rem;
+  line-height: 1;
+  margin-top: -2px;
+}
+
+.specData {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
 .specLabel {
   font-family: var(--font-inter);
   font-size: 0.75rem;
-  color: #444;
+  color: #333;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  width: 100%;
 }
 
 .specValue {
   font-family: var(--font-inter);
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: #fff;
   font-weight: 500;
-  text-align: right;
-  width: 100%;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
 }
 
-/* THE PINK PULSE MARKER (Inferred for [+] logic) */
-.plusIcon {
-  color: #ff0080;
-  font-weight: 800;
-  font-size: 1.25rem;
+.card:hover .specValue {
+  opacity: 1;
 }
 
 /* MONOLITHIC CTA */
@@ -183,27 +204,29 @@
 }
 
 .inquireBtn:hover {
-  background: #ff0080; /* BEAUTIFUL PINK */
+  background: #ff0080; /* PINK FOCUS */
   color: #fff;
 }
 
-/* Inquiry Outro */
+/* Outro Section */
 .outro {
   margin-top: 15rem;
   padding: 12rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
 }
 
 .outroTitle {
   font-family: var(--font-syne);
-  font-size: clamp(3rem, 10vw, 8rem);
+  font-size: clamp(3.5rem, 12vw, 10rem);
   text-transform: uppercase;
   margin-bottom: 5rem;
+  line-height: 0.85;
 }
 
 .contactLink {
   font-family: var(--font-syne);
-  font-size: clamp(2.5rem, 10vw, 12rem);
+  font-size: clamp(2.5rem, 10vw, 13rem);
   color: #fff;
   text-decoration: underline;
   text-underline-offset: 15px;
@@ -212,7 +235,8 @@
 }
 
 .contactLink:hover {
-  opacity: 0.5;
+  color: #ff0080;
+  opacity: 0.8;
 }
 
 @media (max-width: 1024px) {

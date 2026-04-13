@@ -71,51 +71,58 @@ const DETAILED_OFFERINGS = [
 ] as const;
 
 export default function PackagesClient() {
-  const fadeIn = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-  } as const;
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
 
   return (
-    <main style={{ backgroundColor: '#000' }}>
+    <main style={{ backgroundColor: '#000', minHeight: '100vh', position: 'relative' }}>
       <Header />
       
       <div className={styles.container}>
-        <header className={styles.header}>
-          <motion.span 
-            className={styles.label}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            Technical Models // v4
-          </motion.span>
-          <motion.h1 
-            className={styles.title}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+        <motion.header 
+          className={styles.header}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className={styles.label}>Technical Models // v4</span>
+          <h1 className={styles.title}>
             The Production <br /> Catalog
-          </motion.h1>
-          <motion.p 
-            className={styles.description}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
+          </h1>
+          <p className={styles.description}>
             Explore our full suite of technical deployment models and digital engineering infrastructure designed for high-stakes brands.
-          </motion.p>
-        </header>
+          </p>
+        </motion.header>
 
-        <section className={styles.pricingGrid}>
-          {DETAILED_OFFERINGS.map((cat, index) => (
+        <motion.section 
+          className={styles.pricingGrid}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {DETAILED_OFFERINGS.map((cat) => (
             <motion.div 
               key={cat.id} 
               className={styles.card}
-              {...fadeIn}
-              transition={{ ...fadeIn.transition, delay: index * 0.1 }}
+              variants={itemVariants}
             >
               {cat.isBestSeller && <div className={styles.bestSellerTag}>Studio Standard</div>}
               
@@ -126,36 +133,44 @@ export default function PackagesClient() {
 
               <p className={styles.cardDesc}>{cat.description}</p>
 
-              <div className={styles.specsList}>
+              <ul className={styles.featureList}>
                 {cat.specs.map((spec, i) => (
-                  <div key={i} className={styles.specItem}>
-                    <span className={styles.specLabel}>{spec.module}</span>
-                    <span className={styles.specValue}>{spec.deliverable}</span>
-                  </div>
+                  <li key={i} className={styles.featureItem}>
+                    <span className={styles.checkIcon}>+</span>
+                    <div className={styles.specData}>
+                      <span className={styles.specLabel}>{spec.module}</span>
+                      <span className={styles.specValue}>{spec.deliverable}</span>
+                    </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
-              <motion.a 
+              <a 
                 href="mailto:hello@xudo.studio"
                 className={styles.inquireBtn}
-                whileHover={{ y: -5 }}
               >
                 Initiate Project
-              </motion.a>
+              </a>
             </motion.div>
           ))}
-        </section>
+        </motion.section>
 
-        <section className={styles.outro}>
-          <h2 className={styles.outroTitle}>Proprietary Engineering?</h2>
+        <motion.div 
+          className={styles.outro}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <h2 className={styles.outroTitle}>READY FOR <br /> DEPLOYMENT?</h2>
           <a href="mailto:hello@xudo.studio" className={styles.contactLink}>
-            Custom Quote.
+            hello@xudo.studio
           </a>
           
           <Link href="/" className={styles.backHome}>
             Return to Studio Overview
           </Link>
-        </section>
+        </motion.div>
       </div>
 
       <Footer />
