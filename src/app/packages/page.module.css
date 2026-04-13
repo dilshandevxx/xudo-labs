@@ -88,7 +88,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #ff0080;
+  background: #00ff80;
 }
 
 /* PERFECT SYMMETRICAL GRID */
@@ -121,9 +121,9 @@
 }
 
 .card:hover {
-  border-color: rgba(255, 0, 128, 0.4);
+  border-color: rgba(0, 255, 128, 0.4);
   transform: translateY(-8px);
-  box-shadow: 0 40px 100px -20px rgba(255, 0, 128, 0.15);
+  box-shadow: 0 40px 100px -20px rgba(0, 255, 128, 0.15);
 }
 
 .cardHeader {
@@ -144,7 +144,7 @@
 .price {
   font-family: var(--font-inter);
   font-size: 1rem;
-  color: #ff0080; /* SIGNATURE PINK */
+  color: #00ff80; /* TECHNICAL GREEN */
   font-weight: 800;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
@@ -216,7 +216,7 @@
   background: #00ff80;
   color: #fff;
   transform: scale(1.02);
-  box-shadow: 0 10px 30px rgba(255, 0, 128, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 255, 128, 0.3);
 }
 
 /* REDESIGNED OUTRO: THE EDITORIAL SIGNATURE */
@@ -241,9 +241,9 @@
 .statusDot {
   width: 10px;
   height: 10px;
-  background: #ff0080;
+  background: #00ff80;
   border-radius: 50%;
-  box-shadow: 0 0 15px rgba(255, 0, 128, 0.6);
+  box-shadow: 0 0 15px rgba(0, 255, 128, 0.6);
   animation: pulse 2s infinite;
 }
 
@@ -292,7 +292,7 @@
   color: #00ff80;
   border-color: #00ff80;
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(255, 0, 128, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 255, 128, 0.1);
 }
 
 @keyframes pulse {
