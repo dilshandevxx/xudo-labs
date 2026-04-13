@@ -1,105 +1,138 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 const CATEGORIES = [
   { id: "web", label: "Web Platforms" },
   { id: "ai", label: "Agentic AI" },
   { id: "design", label: "Strategic Design" },
-  { id: "consulting", label: "Consultancy" }
+  { id: "consulting", label: "Consultancy" },
 ] as const;
 
 const PACKAGE_GROUPS = {
   web: [
     {
       id: "w1",
-      name: "Starter Engine",
-      price: "From $15,000",
-      description: "High-performance single-page architectures for early stage ventures.",
-      features: ["Custom Landing Engine", "Core Performance Sync", "SEO Infrastructure", "Domain Deployment"]
+      name: "Basic",
+      badge: null,
+      price: "$599",
+      priceNote: "Starting At",
+      tagline: "Basic Single Page",
+      description: "A clean, fast single-page site to get your business online instantly.",
+      features: ["Basic Single Page", "Free Subdomain", "Map Setup"],
     },
     {
       id: "w2",
-      name: "Growth Ecosystem",
-      price: "From $32,000",
-      description: "Scalable multi-page digital estates built for market dominance.",
-      features: ["Multi-Page Architecture", "Advanced Local SEO", "CMS Integration", "Social Logic Sync"]
+      name: "Starter",
+      badge: null,
+      price: "$1,200",
+      priceNote: "Starting At",
+      tagline: "Smart Single Page",
+      description: "A polished presence with your own domain, SEO foundations, and analytics built in.",
+      features: ["Smart Single Page", "Custom Domain", "SEO & Analytics"],
     },
     {
       id: "w3",
-      name: "Enterprise Platform",
-      price: "From $65,000",
-      description: "Custom web applications and full-scale technological infrastructures.",
-      features: ["Custom Web App / SaaS", "High-Load Optimization", "Advanced Security Suite", "Dedicated Support Layer"]
+      name: "Growth",
+      badge: "MOST POPULAR",
+      price: "$2,500",
+      priceNote: "Starting At",
+      tagline: "Multi-Page Site",
+      description: "A full multi-page site built to capture local leads, rank on Google, and convert visitors.",
+      features: ["Multi-Page Site", "Custom Domain", "Maps & Local SEO", "Facebook & WhatsApp"],
     },
     {
       id: "w4",
-      name: "Corporate Portal",
-      price: "From $48,000",
-      description: "Robust internal architectures for high-end corporate communication.",
-      features: ["Internal Data Hubs", "Employee Portal Logic", "SSO Integration", "Document Security Suite"]
+      name: "Premium",
+      badge: null,
+      price: "$4,500",
+      priceNote: "Starting At",
+      tagline: "Pro Multi-Page Site",
+      description: "A professional-grade site with business email, advanced SEO, and refined UX design.",
+      features: ["Pro Multi-Page Site", "Business Email", "Advanced SEO"],
     },
     {
       id: "w5",
-      name: "DTC Commerce",
-      price: "From $55,000",
-      description: "Custom headless retail engines designed for high-conversion brands.",
-      features: ["Headless Shopify Setup", "Custom Checkout Flow", "Inventory Sync API", "Performance retail Grid"]
+      name: "Ultra",
+      badge: null,
+      price: "$8,000",
+      priceNote: "Starting At",
+      tagline: "Dynamic Web App",
+      description: "A fully custom dynamic web application with hosting, backups, and a complete ads setup.",
+      features: ["Dynamic Web App", "Hosting & Backups", "Full Ads Setup"],
     },
     {
       id: "w6",
-      name: "Web3 Gateway",
-      price: "From $72,000",
-      description: "Blockchain-integrated digital experiences and dApp infrastructure.",
-      features: ["Wallet Connect Integration", "Smart Contract UI", "On-Chain Data Sync", "Protocol Security Audit"]
-    }
+      name: "Elite",
+      badge: null,
+      price: "Custom",
+      priceNote: "Bespoke Quote",
+      tagline: "Full-Scale Digital System",
+      description: "A bespoke, enterprise-grade digital system built end-to-end with white-glove support.",
+      features: ["Custom Architecture", "Dedicated Support", "Advanced Integrations", "Priority Delivery"],
+    },
   ],
   ai: [
     {
       id: "ai1",
       name: "Agentic Integration",
-      price: "From $25,000",
-      description: "Deploy autonomous AI agents into your existing business workflows.",
-      features: ["Custom Agent Logic", "API Integration Suite", "Contextual Memory", "Workflow Automation"]
+      badge: null,
+      price: "$25,000",
+      priceNote: "Starting At",
+      tagline: "Autonomous Workflows",
+      description: "Deploy autonomous AI agents into your existing business workflows at scale.",
+      features: ["Custom Agent Logic", "API Integration Suite", "Contextual Memory", "Workflow Automation"],
     },
     {
       id: "ai2",
       name: "Intelligence Layer",
-      price: "From $55,000",
-      description: "Full-scale RAG systems and fine-tuned LLM architectures.",
-      features: ["RAG Infrastructure", "LLM Fine-Tuning", "Vector Database Setup", "Scalable GPU Compute"]
-    }
+      badge: "FLAGSHIP",
+      price: "$55,000",
+      priceNote: "Starting At",
+      tagline: "Full-Scale LLM Architecture",
+      description: "Full-scale RAG systems and fine-tuned LLM architectures purpose-built for your data.",
+      features: ["RAG Infrastructure", "LLM Fine-Tuning", "Vector Database Setup", "Scalable GPU Compute"],
+    },
   ],
   design: [
     {
       id: "d1",
       name: "Visual Identity",
-      price: "From $12,000",
-      description: "Strategic branding and high-fidelity UI systems for elite brands.",
-      features: ["Brand Identity V1", "Typography System", "Component Library", "Interactive Prototype"]
+      badge: null,
+      price: "$12,000",
+      priceNote: "Starting At",
+      tagline: "Brand & UI System",
+      description: "Strategic branding and high-fidelity UI systems for elite brands that demand excellence.",
+      features: ["Brand Identity V1", "Typography System", "Component Library", "Interactive Prototype"],
     },
     {
       id: "d2",
       name: "Design Operations",
-      price: "From $28,000",
-      description: "End-to-end design systems and continuous product design support.",
-      features: ["Full Design System", "UX Research Audit", "Product Scaling Logic", "Multi-Platform Sync"]
-    }
+      badge: "ENTERPRISE",
+      price: "$28,000",
+      priceNote: "Starting At",
+      tagline: "End-To-End Design Engine",
+      description: "End-to-end design systems and continuous product design support across your entire stack.",
+      features: ["Full Design System", "UX Research Audit", "Product Scaling Logic", "Multi-Platform Sync"],
+    },
   ],
   consulting: [
     {
       id: "c1",
       name: "Fractional CTO",
-      price: "Retainer Based",
-      description: "Strategic technology leadership and architectural decision support.",
-      features: ["Architecture Audits", "Stack Selection", "Team Scaling Support", "Security Compliance"]
-    }
-  ]
+      badge: null,
+      price: "Retainer",
+      priceNote: "Monthly Engagement",
+      tagline: "Strategic Tech Leadership",
+      description: "Strategic technology leadership and architectural decision support for growth-stage companies.",
+      features: ["Architecture Audits", "Stack Selection", "Team Scaling Support", "Security Compliance"],
+    },
+  ],
 };
 
 export default function PackagesClient() {
@@ -108,18 +141,20 @@ export default function PackagesClient() {
   return (
     <main className={styles.mainWrapper}>
       <Header />
-      
-      <div className={styles.container}>
-        <motion.header 
-          className={styles.header}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <h1 className={styles.title}>TECHNICAL CATALOG</h1>
-        </motion.header>
 
-        {/* CATEGORY SWITCHER */}
+      {/* Hero Section */}
+      <section className={styles.hero}>
+        <div className={styles.heroOverline}>
+          SERVICE CATALOG
+        </div>
+        <h1 className={styles.heroTitle}>Project<br />Packages</h1>
+        <p className={styles.heroSub}>
+          Standardized, high-impact technical packages designed to deliver precise outcomes and scalable growth for modern brands.
+        </p>
+      </section>
+
+      {/* Tab Nav */}
+      <div className={styles.tabWrap}>
         <nav className={styles.tabBar}>
           {CATEGORIES.map((cat) => (
             <button
@@ -129,73 +164,84 @@ export default function PackagesClient() {
             >
               {cat.label}
               {activeCategory === cat.id && (
-                <motion.div 
-                  layoutId="activeIndicator"
+                <motion.div
+                  layoutId="tab-indicator"
                   className={styles.activeIndicator}
                 />
               )}
             </button>
           ))}
         </nav>
+      </div>
 
-        <div className={styles.contentArea}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className={styles.pricingGrid}
-            >
-              {PACKAGE_GROUPS[activeCategory].map((pkg) => (
-                <div key={pkg.id} className={styles.card}>
-                  <header className={styles.cardHeader}>
+      {/* Grid */}
+      <section className={styles.gridSection}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory}
+            className={styles.pricingGrid}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            {PACKAGE_GROUPS[activeCategory].map((pkg, idx) => {
+              const isFeatured = "badge" in pkg && !!pkg.badge;
+              return (
+                <div key={pkg.id} className={`${styles.card} ${isFeatured ? styles.cardFeatured : ""}`}>
+                  {/* Top Meta */}
+                  <div className={styles.cardMeta}>
+                    <span className={styles.cardIndex}>{String(idx + 1).padStart(2, "0")}</span>
+                    {isFeatured && <span className={styles.cardBadge}>{pkg.badge}</span>}
+                  </div>
+
+                  {/* Price Area */}
+                  <div className={styles.priceHero}>
+                    <div className={styles.priceValue}>{pkg.price}</div>
+                    <div className={styles.priceNote}>{pkg.priceNote}</div>
+                  </div>
+
+                  {/* Identity */}
+                  <div className={styles.cardIdentity}>
                     <h2 className={styles.cardTitle}>{pkg.name}</h2>
-                    <div className={styles.price}>{pkg.price}</div>
-                  </header>
+                    <p className={styles.cardDesc}>{pkg.description}</p>
+                  </div>
 
-                  <p className={styles.cardDesc}>{pkg.description}</p>
-
+                  {/* Features */}
                   <ul className={styles.featureList}>
-                    {pkg.features.map((feature, i) => (
-                      <li key={i} className={styles.featureItem}>
-                        <span className={styles.plusIcon}>+</span>
-                        <span className={styles.featureText}>{feature}</span>
+                    {pkg.features.map((f, i) => (
+                      <li key={i} className={styles.featureRow}>
+                        <span className={styles.featureIcon}></span>
+                        <span className={styles.featureText}>{f}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <a href="mailto:hello@xudo.studio" className={styles.inquireBtn}>
-                    Initiate Project
-                  </a>
+                  {/* Actions */}
+                  <div className={styles.cardActions}>
+                    <Link href="mailto:hello@xudo.studio" className={styles.inquireBtn}>
+                      Inquire Now
+                    </Link>
+                  </div>
                 </div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
+      </section>
 
-        <motion.div 
-          className={styles.outro}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true }}
-        >
-          <div className={styles.statusBox}>
-            <div className={styles.statusDot} />
-            <span className={styles.statusText}>SYSTEM LIVE // DEPLOYMENT READY</span>
-          </div>
-          
-          <h2 className={styles.outroTitle}>INITIATE YOUR ENGINE</h2>
-          
-          <div className={styles.contactWrapper}>
-            <a href="mailto:hello@xudo.studio" className={styles.contactButton}>
-              hello@xudo.studio
-            </a>
-          </div>
-        </motion.div>
-      </div>
+      {/* PreFooter matching global site standard */}
+      <section className={styles.preFooter}>
+        <div className={styles.topText}>
+          SYSTEM LIVE // DEPLOYMENT READY
+        </div>
+        <h2 className={styles.mainHeading}>
+          INITIATE YOUR<br />ENGINE
+        </h2>
+        <Link href="mailto:hello@xudo.studio" className={styles.talkButton}>
+          Let's Talk →
+        </Link>
+      </section>
 
       <Footer />
     </main>

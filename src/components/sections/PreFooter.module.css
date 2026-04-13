@@ -71,13 +71,13 @@
   display: inline-flex;
   align-items: center;
   gap: 1.25rem;
-  background-color: #fff;
-  color: #000;
-  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 0; /* RECTANGULAR */
   padding: 1.75rem 4rem;
   font-family: var(--font-body);
-  font-weight: 900;
+  font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.2rem;
   text-decoration: none;
@@ -86,9 +86,9 @@
 }
 
 .talkButton:hover {
-  background-color: transparent;
-  color: #00ff80;
-  border-color: #00ff80;
-  transform: translateY(-6px);
-  box-shadow: 0 30px 60px rgba(0, 255, 128, 0.12);
+  background-color: #fff;
+  color: #000;
+  border-color: #fff;
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.08);
 }
