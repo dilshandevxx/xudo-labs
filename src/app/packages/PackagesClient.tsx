@@ -108,15 +108,9 @@ export default function PackagesClient() {
               {...fadeIn}
               transition={{ ...fadeIn.transition, delay: index * 0.1 }}
             >
-              <div className={styles.cardMeta}>
-                <span className={styles.microTag}>[ ARCH-SYS // {cat.id} ]</span>
-                <span className={styles.microTag}>EST. 2024</span>
-              </div>
-
-              {cat.isBestSeller && <div className={styles.bestSellerTag}>Studio Recommendation</div>}
+              {cat.isBestSeller && <div className={styles.bestSellerTag}>Studio Standard</div>}
               
               <header className={styles.cardHeader}>
-                <span className={styles.cardId}>{cat.id}</span>
                 <h2 className={styles.cardTitle}>{cat.category}</h2>
                 <div className={styles.price}>{cat.price}</div>
               </header>

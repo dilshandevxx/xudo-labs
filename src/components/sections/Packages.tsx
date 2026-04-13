@@ -71,17 +71,11 @@ export default function Packages() {
             transition={{ ...fadeIn.transition, delay: index * 0.1 }}
             viewport={{ once: true }}
           >
-            <div className={styles.cardDecorativeLabels}>
-              <span className={styles.microLabel}>[ X-SEC // {pkg.id} ]</span>
-              <span className={styles.microLabel}>v2.4</span>
-            </div>
-
             {pkg.isBestSeller && (
-              <div className={styles.bestSellerTag}>Studio Favorite</div>
+              <div className={styles.bestSellerTag}>Studio Recommended</div>
             )}
             
             <header className={styles.cardHeader}>
-              <span className={styles.packageLabel}>Tier {pkg.id}</span>
               <h3 className={styles.packageName}>{pkg.name}</h3>
               <div className={styles.priceValue}>{pkg.price}</div>
             </header>
