@@ -30,49 +30,51 @@ const PACKAGES = [
 export default function Packages() {
   return (
     <section className={styles.packagesSection}>
-      <div className={styles.header}>
-        <div className={styles.subtitleWrapper}>
-          <span className={styles.dot} />
-          <span className={styles.subtitle}>Our offerings</span>
-        </div>
-        <h2 className={styles.globalTitle}>
-          Packages.
-        </h2>
-      </div>
-
-      <div className={styles.grid}>
-        {PACKAGES.map((pkg) => (
-          <div key={pkg.id} className={styles.packageCard}>
-            
-            <div className={styles.cardHeader}>
-              <h3 className={styles.cardTitle}>{pkg.name}</h3>
-              <div className={styles.priceValue}>{pkg.price}</div>
-            </div>
-
-            <p className={styles.cardDesc}>{pkg.description}</p>
-
-            <ul className={styles.featureList}>
-              {pkg.features.map((feature, i) => (
-                <li key={i} className={styles.featureItem}>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-
-            <div className={styles.cardActions}>
-              <Link href="mailto:hello@xudo.studio" className={styles.inquireBtn}>
-                Inquire
-              </Link>
-            </div>
-
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <div className={styles.subtitleWrapper}>
+            <span className={styles.dot} />
+            <span className={styles.subtitle}>Our offerings</span>
           </div>
-        ))}
-      </div>
+          <h2 className={styles.globalTitle}>
+            Packages.
+          </h2>
+        </div>
 
-      <div className={styles.viewAllContainer}>
-        <Link href="/packages" className={styles.viewAllBtn}>
-          View All Packages
-        </Link>
+        <div className={styles.grid}>
+          {PACKAGES.map((pkg) => (
+            <div key={pkg.id} className={styles.packageCard}>
+              
+              <div className={styles.cardHeader}>
+                <h3 className={styles.cardTitle}>{pkg.name}</h3>
+                <div className={styles.priceValue}>{pkg.price}</div>
+              </div>
+
+              <p className={styles.cardDesc}>{pkg.description}</p>
+
+              <ul className={styles.featureList}>
+                {pkg.features.map((feature, i) => (
+                  <li key={i} className={styles.featureItem}>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              <div className={styles.cardActions}>
+                <Link href="mailto:hello@xudo.studio" className={styles.inquireBtn}>
+                  Inquire
+                </Link>
+              </div>
+
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.viewAllContainer}>
+          <Link href="/packages" className={styles.viewAllBtn}>
+            View All Packages
+          </Link>
+        </div>
       </div>
     </section>
   );

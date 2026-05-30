@@ -2,7 +2,7 @@
   padding: clamp(5rem, 15vw, 10rem) var(--container-padding);
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Left-aligned per user direction */
+  align-items: center; /* Center the internal containers on ultra-wide */
   background: var(--background);
 }
 
@@ -11,6 +11,8 @@
   flex-direction: column;
   align-items: flex-start; /* Left-aligned */
   margin-bottom: clamp(6rem, 12vw, 10rem);
+  width: 100%;
+  max-width: 1400px;
 }
 
 .icon {
@@ -35,7 +37,7 @@
   grid-template-columns: 1fr;
   gap: 6rem;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
 }
 
 @media (min-width: 768px) {
@@ -173,6 +175,7 @@
   display: flex;
   justify-content: flex-start; /* Left-aligned */
   width: 100%;
+  max-width: 1400px;
 }
 
 .viewAllBtn {

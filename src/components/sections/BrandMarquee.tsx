@@ -32,8 +32,8 @@ function GitlabIcon() {
 }
 
 export default function BrandMarquee() {
-  // Double the array to allow for smooth infinite scrolling
-  const duplicatedBrands = [...BRANDS, ...BRANDS, ...BRANDS, ...BRANDS];
+  // Duplicate the array many times to ensure it covers extreme zoom levels seamlessly
+  const duplicatedBrands = Array(50).fill(BRANDS).flat();
 
   return (
     <section className={styles.marqueeSection}>
