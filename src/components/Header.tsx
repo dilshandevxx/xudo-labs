@@ -6,6 +6,13 @@ import { Menu, X } from "lucide-react";
 import styles from "./Header.module.css";
 import NavigationMenu from "./NavigationMenu";
 
+const NAV_LINKS = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/#work", label: "Work" },
+  { href: "/blog", label: "Insights" },
+];
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

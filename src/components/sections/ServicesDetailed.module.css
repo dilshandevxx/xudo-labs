@@ -108,11 +108,9 @@
 
 .image {
   object-fit: cover;
-  filter: grayscale(20%);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .serviceBlock:hover .image {
   transform: scale(1.05);
-  filter: grayscale(0%);
 }

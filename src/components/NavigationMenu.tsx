@@ -50,9 +50,6 @@ export default function NavigationMenu({ isOpen, onClose }: NavigationMenuProps)
             <motion.div 
                className={styles.linksContainer}
                variants={containerVariants}
-               initial="closed"
-               animate="open"
-               exit="closed"
             >
               {NAV_LINKS.map((link, index) => (
                 <motion.div key={index} variants={itemVariants} className={styles.linkItem}>
