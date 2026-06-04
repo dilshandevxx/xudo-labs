@@ -1,9 +1,16 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import styles from "./Hero.module.css";
+
+const CAROUSEL_DATA = [
+  { src: "/images/science_tech.png", title: "JUPI", tags: ["Jupi", "SAAS"] },
+  { src: "/images/ecommerce_card.png", title: "E-COM", tags: ["Retail", "Web"] },
+  { src: "/images/music_festival.png", title: "FEST", tags: ["Event", "App"] },
+  { src: "/images/portfolio1.png", title: "PORTFOLIO", tags: ["Design", "Studio"] },
+];
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -11,6 +18,15 @@ export default function Hero() {
     target: containerRef,
     offset: ["start start", "end start"],
   });
+
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImgIndex((prev) => (prev + 1) % CAROUSEL_DATA.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
@@ -28,6 +44,8 @@ export default function Hero() {
     hidden: { opacity: 0, y: 100 },
     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.76, 0, 0.24, 1] } }
   } as const;
+
+  const currentSlide = CAROUSEL_DATA[currentImgIndex];
 
   return (
     <section className={styles.hero} ref={containerRef}>
@@ -83,19 +101,24 @@ export default function Hero() {
         </motion.div>
         
         <div className={styles.mobileCenterMedia}>
-          <motion.div 
-            className={styles.mobileMainImg}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          >
-            <Image src="/images/science_tech.png" fill alt="Hero illustration" className={styles.mobileImg} />
-            <div className={styles.imageTags}>
-                <span className={styles.tag}>Jupi</span>
-                <span className={styles.tag}>SAAS</span>
-            </div>
-            <h2 className={styles.imageOverlayText}>JUPI</h2>
-          </motion.div>
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={currentImgIndex}
+              className={styles.mobileMainImg}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <Image src={currentSlide.src} fill alt="Hero illustration" className={styles.mobileImg} />
+              <div className={styles.imageTags}>
+                  {currentSlide.tags.map(tag => (
+                    <span key={tag} className={styles.tag}>{tag}</span>
+                  ))}
+              </div>
+              <h2 className={styles.imageOverlayText}>{currentSlide.title}</h2>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         <motion.p 
