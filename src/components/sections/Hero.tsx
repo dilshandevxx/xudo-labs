@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import styles from "./Hero.module.css";
 
 const CAROUSEL_DATA = [
-  { src: "/images/jupi_hero.png", title: "JUPI", tags: ["Jupi", "SAAS"] },
+  { src: "/images/hero.png", title: "XŪDŪ", tags: ["Design", "Digital"] },
 ];
 
 export default function Hero() {
@@ -107,7 +107,7 @@ export default function Hero() {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
-              <Image src={currentSlide.src} fill alt="Hero illustration" className={styles.mobileImg} />
+              <Image src={currentSlide.src} fill priority alt="Hero illustration" className={styles.mobileImg} />
               <div className={styles.imageTags}>
                   {currentSlide.tags.map(tag => (
                     <span key={tag} className={styles.tag}>{tag}</span>

@@ -18,6 +18,12 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export const metadata: Metadata = {
   title: {
     default: "XŪDŪ | High-End Digital Production Studio",
