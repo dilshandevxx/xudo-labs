@@ -11,6 +11,7 @@ import Blog from "@/components/sections/Blog";
 import PreFooter from "@/components/sections/PreFooter";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
+import { getLatestArticles } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "XŪDŪ | High-End Digital Production Studio",
@@ -22,7 +23,9 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getLatestArticles(6);
+
   return (
     <main>
       <Header />
@@ -34,7 +37,7 @@ export default function Home() {
       <Testimonials />
       <Packages />
       <CTA />
-      <Blog />
+      <Blog posts={posts} />
       <PreFooter />
       <Footer />
     </main>
