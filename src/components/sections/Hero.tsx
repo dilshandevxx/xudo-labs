@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import styles from "./Hero.module.css";
 
 const CAROUSEL_DATA = [
-  { src: "/images/mobile-hero.png", title: "JUPI", tags: ["Jupi", "SAAS"] },
+  { src: "/images/mobile_hero_vibe.png", title: "JUPI", tags: ["Jupi", "SAAS"] },
 ];
 
 export default function Hero() {
