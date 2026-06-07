@@ -108,12 +108,6 @@ export default function Hero() {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
               <Image src={currentSlide.src} fill priority alt="Hero illustration" className={styles.mobileImg} />
-              <div className={styles.imageTags}>
-                  {currentSlide.tags.map(tag => (
-                    <span key={tag} className={styles.tag}>{tag}</span>
-                  ))}
-              </div>
-              <h2 className={styles.imageOverlayText}>{currentSlide.title}</h2>
             </motion.div>
           </AnimatePresence>
         </div>
